@@ -1,1 +1,40 @@
-/* successfully applied to page */
+.form-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    width: 380px;
+    margin: auto;
+    box-shadow: 5px 5px 5px 5px grey;
+}
+
+#login-form {
+    justify-content: center;
+}
+
+input {
+    width: 300px;
+}
+
+#login-button-div {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0px;
+}
+
+#login-button {
+    padding: 1px 0px;
+    width: 308px;
+}
+
+.other-page-link {
+    text-decoration: none;
+}
+
+.link-div {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 20px;
+}

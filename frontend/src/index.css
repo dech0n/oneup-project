@@ -1,1 +1,12 @@
 /* TODO Add site wide styles */
+
+body {
+    color: grey;
+}
+
+button {
+    background-color: rgba(255, 69, 00, .7);
+    color: grey;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
