@@ -1,7 +1,27 @@
 /* TODO Add site wide styles */
+@font-face {
+    font-family: BigBang;
+    src: url('./fonts/BigBang.otf')
+    format('opentype');
+}
 
 body {
     color: grey;
+    font-family: BigBang;
+    /* Site Fonts:
+    Chathura (font squirrel)
+    Exo / Exo Condensed (FS)
+    Futura Renner (FS)
+    Meccanica (FS)
+    BigBang
+
+    LOGO Fonts:
+    Salaryman (FS)
+    Arista Pro (FS)
+    FortySecondStreet (FS)
+    BigBang
+
+     */
 }
 
 button {
