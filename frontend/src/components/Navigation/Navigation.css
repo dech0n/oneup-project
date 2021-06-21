@@ -1,0 +1,15 @@
+.navlinks {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: flex-end;
+}
+
+.navbar {
+    padding: 5px;
+    color: grey;
+    text-decoration: none;
+}
+
+.active {
+    color: orangered;
+}
