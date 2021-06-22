@@ -5,6 +5,10 @@ const apiRouter = require('./api')
 
 router.use('/api', apiRouter);
 
+router.get('/home', (req, res) => {
+  
+})
+
 // Static routes
 // Serve React build files in production
 if (process.env.NODE_ENV === 'production') {

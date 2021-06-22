@@ -1,4 +1,4 @@
-.form-div {
+#login-form-div {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -15,11 +15,12 @@
     height: 25px;
     border: none;
     border-bottom: 1px solid grey;
-    text-size-adjust: auto;
 }
 
 .login-input:focus {
     outline: none;
+    background-color: rgba(128, 128, 128, .1);
+    border-radius: 3px;
 }
 
 .login-input[type="text"], .login-input[type="password"]

@@ -23,14 +23,17 @@ function Navigation({ isLoaded }) {
   }
 
   return (
-    <ul>
-      <nav>
-        <li className='navlinks'>
-          <NavLink className='navbar' id='home-navlink' exact to="/">Home</NavLink>
-          {isLoaded && sessionLinks}
-        </li>
-      </nav>
-    </ul>
+    <>
+      <ul>
+        <li><span className='logo' id='logo-one'>One<span className='logo' id='logo-up'>Up</span></span></li>
+        <nav>
+          <li className='navlinks'>
+            <NavLink className='navbar' id='home-navlink' exact to="/">Home</NavLink>
+            {isLoaded && sessionLinks}
+          </li>
+        </nav>
+      </ul>
+    </>
   );
 }
 

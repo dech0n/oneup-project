@@ -1,3 +1,9 @@
+@font-face {
+    font-family: FortySecondStreet;
+    src: url('../../assets/fonts/FortySecondStreetHB/FORTSSH_.ttf')
+    format('opentype');
+}
+
 .navlinks {
     display: flex;
     /* flex-direction: column; */
@@ -12,5 +18,13 @@
 }
 
 .active {
+    color: orangered;
+}
+
+.logo {
+    font-family: FortySecondStreet;
+}
+
+#logo-up {
     color: orangered;
 }
