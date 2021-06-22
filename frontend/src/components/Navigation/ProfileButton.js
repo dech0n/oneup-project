@@ -31,7 +31,7 @@ function ProfileButton({ user }) {
   return (
     <>
       <button onClick={openMenu}>
-        <i className="fas fa-user-ninja" >{user.username}</i>
+        <i className="fas fa-user-ninja" >{"\t"}{user.username}</i>
       </button>
       {showMenu && (
         <ul className="profile-dropdown">
