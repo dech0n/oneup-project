@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import * as sessionActions from "../../store/session";
 import './SignupForm.css';
 
@@ -29,48 +29,62 @@ function SignupFormPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-      </ul>
-      <label>
-        Email
-        <input
-          type="text"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Username
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Confirm Password
-        <input
-          type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type="submit">Sign Up</button>
-    </form>
+    <div className='form-div login-register-div' id='register-form-div'>
+      <h1>Sign Up</h1>
+      <form className='login-register-form' id='register-form' onSubmit={handleSubmit}>
+        <div className='errors-div login-register-errors-div' id='register-errors-div'>
+          <ul className='errors login-register-errors' id='register-errors'>
+            {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+          </ul>
+        </div>
+        <div className='label-div' id='email-div'>
+          <div className='input-div' id='email-input-div'>
+            <input
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              />
+          </div>
+              <label>
+                Email
+              </label>
+        </div>
+        <label>
+          <input
+            type="text"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+            />
+            Username
+        </label>
+        <label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            />
+            Password
+        </label>
+        <label>
+          <input
+            type="password"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+            />
+            Confirm Password
+        </label>
+        <div className='button-div login-register-button-div' id='register-button-div'>
+          <button className='buttons login-register-buttons' id='register-button' type="submit">Sign Up</button>
+        </div>
+        <div className='link-div login-register-link-div'>
+          <Link className='other-page-link login-register-page-link' to='/login'>Already have an account?<br/>Log in here!</Link>
+        </div>
+      </form>
+    </div>
   );
 }
 
