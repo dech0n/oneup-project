@@ -5,7 +5,21 @@ module.exports = (sequelize, DataTypes) => {
     image: DataTypes.STRING
   }, {});
   Game.associate = function(models) {
-    // associations can be defined here
+    const platformColumnMapping = {
+      through: 'PlatformGames',
+      foreignKey: 'gameId',
+      otherKey: 'platformId'
+    }
+
+    const userColumnMapping = {
+      through: 'UserGames',
+      foreignKey: 'gameId',
+      otherKey: 'userId'
+    }
+
+    Game.hasMany(models.Event, {foreignKey: 'gameId'});
+    Game.belongsToMany(models.Platform, platformColumnMapping)
+    Game.belongsToMany(models.User, userColumnMapping)
   };
   return Game;
 };

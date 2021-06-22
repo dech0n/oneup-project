@@ -6,7 +6,10 @@ module.exports = (sequelize, DataTypes) => {
     tag: DataTypes.STRING
   }, {});
   Gamertag.associate = function(models) {
-    // associations can be defined here
+    // rsvp, user, platform
+    Gamertag.belongsTo(models.User, {foreignKey: 'userId'});
+    Gamertag.belongsTo(models.Platform, {foreignKey: 'platformId'});
+    Gamertag.hasMany(models.RSVP, {foreignKey: 'gamertagId'})
   };
   return Gamertag;
 };

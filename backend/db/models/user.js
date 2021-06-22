@@ -49,7 +49,15 @@ module.exports = (sequelize, DataTypes) => {
     });
 
   User.associate = function (models) {
-    // associations can be defined here
+    const columnMapping = {
+      through: 'UserGames',
+      foreignKey: 'userId',
+      otherKey: 'gameId'
+    }
+
+    User.belongsToMany(models.Game, columnMapping);
+    User.hasMany(models.Gamertag, {foreignKey: 'gamertagId'});
+    User.hasMany(models.Event, {foreignKey: 'hostId'})
   };
 
 

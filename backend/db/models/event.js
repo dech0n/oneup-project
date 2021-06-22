@@ -9,7 +9,9 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Event.associate = function(models) {
-    // associations can be defined here
+    Event.belongsTo(models.User, {foreignKey: 'hostId'});
+    Event.belongsTo(models.Game, {foreignKey: 'gameId'});
+    Event.hasMany(models.RSVP, {foreignKey: 'eventId'});
   };
   return Event;
 };
