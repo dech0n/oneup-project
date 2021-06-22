@@ -9,9 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       platformId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       gameId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {

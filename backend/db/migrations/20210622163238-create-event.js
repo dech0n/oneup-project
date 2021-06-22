@@ -9,22 +9,28 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       hostId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       gameId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       name: {
-        type: Sequelize.STRING
+        allowNull: false,
+        type: Sequelize.STRING(50)
       },
       date: {
-        type: Sequelize.DATE
+        allowNull: false,
+        type: Sequelize.DATE,
+        default: Sequelize.NOW
       },
       capacity: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,

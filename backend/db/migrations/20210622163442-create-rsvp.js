@@ -9,9 +9,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       eventId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       gamertagId: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
       createdAt: {
