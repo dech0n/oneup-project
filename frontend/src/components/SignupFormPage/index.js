@@ -44,6 +44,7 @@ function SignupFormPage() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className='register-input'
               />
           </div>
               <label>
@@ -56,6 +57,7 @@ function SignupFormPage() {
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
+            className='register-input'
             />
             Username
         </label>
@@ -65,6 +67,7 @@ function SignupFormPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
+            className='register-input'
             />
             Password
         </label>
@@ -74,6 +77,7 @@ function SignupFormPage() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
+            className='register-input'
             />
             Confirm Password
         </label>

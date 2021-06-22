@@ -1,14 +1,38 @@
-/* .form-div {
+/* figure out how to CENTER THE DANG INPUT FIELDS */
+
+#register-form-div {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     align-items: center;
     box-sizing: border-box;
     border-radius: 5px;
     width: 380px;
     margin: auto;
     box-shadow: 5px 5px 5px 5px grey;
-} */
+}
+
+.register-input {
+    width: 300px;
+    height: 25px;
+    border: none;
+    border-bottom: 1px solid grey;
+    text-size-adjust: auto;
+    /* align-self: center; */
+}
+
+.register-input:focus {
+    outline: none;
+    background-color: rgba(128, 128, 128, .1);
+    border-radius: 3px;
+}
+
+.register-input[type="text"], .register-input[type="password"]
+{
+    font-size:20px;
+    color: orangered;
+    font-family: BigBang;
+}
 
 #register-form {
     justify-content: center;
