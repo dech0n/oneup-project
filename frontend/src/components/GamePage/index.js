@@ -1,34 +1,44 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect, Link, NavLink } from 'react-router-dom';
+import './GamePage.css'
 
-import * as sessionActions from '../../store/session'; import './GamePage.css'
-
-function GamePage({games}) {
+function GamePage({ games }) {
 
     return (
         <>
             <div id='group-game-header'>
-                <div id='game-image-container'>
-                    [Set game image as container bg]
+                <div id='game-image-container' >
+                    <img src='./images/evolve.jpeg' alt='evolve cover art' />
                 </div>
                 <div id='basic-game-info'>
                     <div id="game-title-container">
-                        <h2>[Game Name]</h2>
+                        <h2>Evolve</h2>
                     </div>
                     <div>
-                        [Platforms game can be played on]
+                        <h3>Available on:</h3>
+                        <ul>
+                            <li>Playstation 4</li>
+                            <li>Playstation 5</li>
+                            <li>Xbox One</li>
+                            <li>Xbox Series S</li>
+                            <li>PC</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <ul>
-                <li>
-                    <NavLink to='/about'>About</NavLink>
-                    <NavLink to='/events'>Events</NavLink>
-                    <NavLink to='/members'>Members</NavLink>
-                    <button>Join</button>
-                </li>
-            </ul>
+            <div id='game-navlink-container'>
+                <ul id='game-navlinks-list'>
+                    <nav id="game-navbar">
+                        <li className='game-navlinks-items'>
+                            <NavLink className='game-navlink' to='/about'>About</NavLink>
+                            <NavLink className='game-navlink' to='/events'>Events</NavLink>
+                            <NavLink className='game-navlink' to='/members'>Members</NavLink>
+                            <button>Join</button>
+                        </li>
+                    </nav>
+                </ul>
+            </div>
             <div id='main-content-container'>
                 <div id='game-description'>
                     <h3>[Description Header]</h3>

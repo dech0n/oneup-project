@@ -23,6 +23,8 @@
 
 .logo {
     font-family: FortySecondStreet;
+    list-style-type: none;
+    font-size: 35px;
 }
 
 #logo-up {

@@ -1,0 +1,38 @@
+#group-game-header {
+    display: flex;
+    border-bottom: 1px solid rgba(128, 128, 128, .2);
+}
+
+#game-image-container {
+    height: 277px;
+    width: 470px;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+#basic-game-info {
+    padding-left: 25px;
+}
+
+#game-nav-link-container {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#game-navlinks-list {
+    padding-left: 0;
+}
+
+.game-navlinks-items {
+    list-style-type: none;
+}
+
+.game-navlink {
+    text-decoration: none;
+    padding: 5px
+
+}
