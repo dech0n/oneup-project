@@ -1,4 +1,5 @@
 'use strict';
+const faker = require('faker');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -12,6 +13,70 @@ module.exports = {
         isBetaMember: false
       }], {});
     */
+
+      return queryInterface.bulkInsert('Games', [
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+        {
+          name: faker.random.words(),
+          image: faker.image.imageUrl(475, 280, true),
+          description: faker.lorem.paragraph(6)
+        } ,
+    ], {});
+
   },
 
   down: (queryInterface, Sequelize) => {
@@ -20,7 +85,7 @@ module.exports = {
       Return a promise to correctly handle asynchronicity.
 
       Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
+      */
+      return queryInterface.bulkDelete('Games', null, {});
   }
 };

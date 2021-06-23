@@ -6,7 +6,7 @@ const apiRouter = require('./api')
 router.use('/api', apiRouter);
 
 router.get('/home', (req, res) => {
-  
+  //
 })
 
 // Static routes

@@ -2,9 +2,9 @@
 const LOAD = 'games/LOAD'
 
 // 'load' action creator
-const load = (list) => ({
+const load = (games) => ({
     type: LOAD,
-    list // the payload
+    games // the payload
 });
 
 // *** send a fetch
@@ -13,4 +13,30 @@ const load = (list) => ({
 // *** dispatch an action
 export const getGames = () => async (dispatch) => {
     const res = await fetch('/api/games');
+
+    if (res.ok) {
+        const games = await res.json();
+        dispatch(load(games));
+    }
 }
+
+const intialState = {}
+
+const gamesReducer = (state = intialState, action) => {
+    switch (action.type) {
+        case LOAD:
+            const allGames = {};
+            action.games.forEach(game => {
+                allGames[game.id] = game;
+            })
+            return {
+                ...allGames,
+                ...state,
+            }
+
+        default:
+            break;
+    }
+}
+
+export default gamesReducer;
