@@ -14,16 +14,22 @@ module.exports = {
         unique: true
       },
       image: {
-        allowNull: true,
+        // allowNull: true,
         type: Sequelize.STRING
+      },
+      description: {
+        // allowNull: true,
+        type: Sequelize.TEXT
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.fn('now'),
       }
     });
   },
