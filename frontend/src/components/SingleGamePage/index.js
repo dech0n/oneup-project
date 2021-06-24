@@ -5,6 +5,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 
+import GameEventsPage from '../GameEventsPage';
 import './SingleGamePage.css'
 
 function SingleGamePage() {
@@ -23,7 +24,7 @@ function SingleGamePage() {
         getSingleGame();
 
         const getGamePlatforms = async () => {
-            const res = await fetch(`/api/platforms/games/${id}`);
+            const res = await fetch(`/api/platforms/game/${id}`);
             if (res.ok) {
                 setPlatforms(await res.json())
             }
@@ -68,7 +69,7 @@ function SingleGamePage() {
                         <nav id="game-navbar">
                             <li className='game-navlinks-items'>
                                 <NavLink className='game-navlink' to={`/games/${id}`}>About</NavLink>
-                                <NavLink className='game-navlink' to='/events'>Events</NavLink>
+                                <NavLink className='game-navlink' to={`/games/${id}/events`}>Events</NavLink>
                                 <NavLink className='game-navlink' to='/members'>Members</NavLink>
                                 <button id='join-button'>Join</button>
                             </li>

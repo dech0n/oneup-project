@@ -6,6 +6,7 @@ import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import SingleGamePage from './components/SingleGamePage'
 import HomePage from './components/HomePage'
+import GameEventsPage from "./components/GameEventsPage";
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path='/games/:id/events'>
+            <GameEventsPage />
           </Route>
           <Route path='/games/:id'>
             <SingleGamePage />
