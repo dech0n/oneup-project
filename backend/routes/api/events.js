@@ -31,7 +31,7 @@ router.get('/', asyncHandler(async (req, res) => {
 // get all events for a single game
 router.get('/game/:gameId', asyncHandler(async (req, res) => {
     const gameId = +req.params.gameId;
-    const events = Event.findAll({
+    const events = await Event.findAll({
         where: {
             gameId
         }
