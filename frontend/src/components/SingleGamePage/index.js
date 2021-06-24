@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';
-import { Redirect, Link, NavLink, useParams } from 'react-router-dom';
-import { getGames } from '../../store/games';
-
+// import { getGames } from '../../store/games';
 // import { getGames, getSingleGame } from '../../store/games';
+
+import React, { useEffect, useState } from 'react';
+import { NavLink, useParams } from 'react-router-dom';
+
 import './SingleGamePage.css'
 
 function SingleGamePage() {

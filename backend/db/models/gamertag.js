@@ -6,10 +6,15 @@ module.exports = (sequelize, DataTypes) => {
     tag: DataTypes.STRING
   }, {});
   Gamertag.associate = function(models) {
-    // rsvp, user, platform
+    const columnMapping = {
+      through: 'RSVPs',
+      foreignKey: 'gamertagId',
+      otherKey: 'eventId'
+    }
+
     Gamertag.belongsTo(models.User, {foreignKey: 'userId'});
     Gamertag.belongsTo(models.Platform, {foreignKey: 'platformId'});
-    Gamertag.hasMany(models.RSVP, {foreignKey: 'gamertagId'})
+    Gamertag.belongsToMany(models.Event, columnMapping)
   };
   return Gamertag;
 };
