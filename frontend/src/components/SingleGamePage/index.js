@@ -1,17 +1,14 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getGames } from '../../store/games';
-// import { getGames, getSingleGame } from '../../store/games';
-
 import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { useParams, Route } from 'react-router-dom';
 
 import GameEventsPage from '../GameEventsPage';
 import GameHeader from './GameHeader';
-import './SingleGamePage.css'
+import GameNavbar from './GameNavbar';
+import GameContent from './GameContent';
+import './SingleGamePage.css';
 
 function SingleGamePage() {
     const { id } = useParams();
-    // const dispatch = useDispatch();
     const [game, setGame] = useState(null)
     const [platforms, setPlatforms] = useState(null)
 
@@ -43,31 +40,14 @@ function SingleGamePage() {
         <>
             <div id='game-page-container'>
                 <GameHeader game={game} platforms={platforms} />
-                <div id='game-navlink-container'>
-                    <ul id='game-navlinks-list'>
-                        <nav id="game-navbar">
-                            <li className='game-navlinks-items'>
-                                <NavLink className='game-navlink' to={`/games/${id}`}>About</NavLink>
-                                <NavLink className='game-navlink' to={`/games/${id}/events`}>Events</NavLink>
-                                <NavLink className='game-navlink' to='/members'>Members</NavLink>
-                                <button id='join-button'>Join</button>
-                            </li>
-                        </nav>
-                    </ul>
-                </div>
-                <div id='main-content-container'>
-                    <div id='game-description'>
-                        <h3 id='game-description-header'>What it's about</h3>
-                        <p id='game-description-text'>{game?.description}</p>
-                    </div>
-                    <div id='members-container'>
-                        <h3>Who plays</h3>
-                        <div id='members-grid'>
-
-                            [Member list as a grid. Profile pics?]
-                        </div>
-                    </div>
-                </div>
+                <GameNavbar id={id} />
+                <Route exact path={`/games/${id}/events`}>
+                    {/* use context to pass the game and platform info ? */}
+                    <GameEventsPage />
+                </Route>
+                <Route exact path={`/games/${id}`}>
+                    <GameContent game={game} />
+                </Route>
             </div>
         </>
     )

@@ -30,9 +30,6 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/games/:id/events'>
-            <GameEventsPage />
-          </Route>
           <Route path='/games/:id'>
             <SingleGamePage />
           </Route>

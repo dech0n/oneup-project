@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import React from 'react';
 
 function GameHeader({game, platforms}) {
-
-
     return (
         <div id='group-game-header'>
             <div id='game-image-container' >
@@ -19,11 +16,8 @@ function GameHeader({game, platforms}) {
                         {
                             platforms?.map(platform => (
                                 <li key={platform.id} className='platform-bullet'><span className='platform-name'>{platform.type}</span></li>
-                            )
-                            )
-
+                            ))
                         }
-
                     </ul>
                 </div>
             </div>
