@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
     gameId: DataTypes.INTEGER
   }, {});
   PlatformGame.associate = function(models) {
-    // associations can be defined here
+    PlatformGame.belongsTo(models.Platform, {foreignKey: 'platformId'})
+    PlatformGame.belongsTo(models.Game, {foreignKey: 'gameId'})
   };
   return PlatformGame;
 };

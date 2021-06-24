@@ -4,7 +4,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
-import GamePage from './components/GamePage'
+import SingleGamePage from './components/SingleGamePage'
 import HomePage from './components/HomePage'
 import * as sessionActions from "./store/session";
 
@@ -29,8 +29,8 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path='/games'>
-            <GamePage />
+          <Route path='/games/:id'>
+            <SingleGamePage />
           </Route>
           <Route>
             <h1>Page Not Found</h1>

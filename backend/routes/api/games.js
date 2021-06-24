@@ -17,6 +17,13 @@ router.get('/:id', asyncHandler(async (req, res) => {
     return res.json(game);
 }));
 
+// // get all platforms for the game
+// router.get('/:id/platforms', asyncHandler(async (req, res) => {
+//     const id = parseInt(req.params.id, 10);
+//     const gamePlatforms = null;
+
+// }))
+
 // create new game
 router.post('/', asyncHandler(async (req, res) => {
     //
