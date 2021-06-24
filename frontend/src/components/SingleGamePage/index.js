@@ -22,7 +22,7 @@ function SingleGamePage() {
         getSingleGame();
 
         const getGamePlatforms = async () => {
-            const res = await fetch(`/api/platforms/game/${id}`);
+            const res = await fetch(`/api/platforms/games/${id}`);
             if (res.ok) {
                 setPlatforms(await res.json())
             }
@@ -66,7 +66,7 @@ function SingleGamePage() {
                     <ul id='game-navlinks-list'>
                         <nav id="game-navbar">
                             <li className='game-navlinks-items'>
-                                <NavLink className='game-navlink' to='/about'>About</NavLink>
+                                <NavLink className='game-navlink' to={`/games/${id}`}>About</NavLink>
                                 <NavLink className='game-navlink' to='/events'>Events</NavLink>
                                 <NavLink className='game-navlink' to='/members'>Members</NavLink>
                                 <button id='join-button'>Join</button>
