@@ -77,7 +77,7 @@ function SingleGamePage() {
                 <div id='main-content-container'>
                     <div id='game-description'>
                         <h3 id='game-description-header'>What it's about</h3>
-                        <p id='game-description-text'>{game.description}</p>
+                        <p id='game-description-text'>{game?.description}</p>
                     </div>
                     <div id='members-container'>
                         <h3>Who plays</h3>
