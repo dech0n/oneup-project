@@ -3,7 +3,6 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const gamesRouter = require('./games.js')
 const platformsRouter = require('./platforms.js')
-const platformgamesRouter = require('./platformgames.js')
 const eventsRouter = require('./events.js')
 
 //! testing only
@@ -18,8 +17,6 @@ router.use('/users', usersRouter);
 router.use('/games', gamesRouter)
 
 router.use('/platforms', platformsRouter)
-
-router.use('/platformgames', platformgamesRouter)
 
 router.use('/events', eventsRouter)
 

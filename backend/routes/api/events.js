@@ -10,27 +10,33 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(events);
 }));
 
-router.get('/game/:gameId', asyncHandler(async (req, res) => {
-    const {gameId} = req.params;
-    const gamePlatforms = await PlatformGame.findAll({
-        where: {
-            gameId,
-        },
-    });
+//? for reference: querying joins table
+// router.get('/game/:gameId', asyncHandler(async (req, res) => {
+//     const {gameId} = req.params;
+//     const gamePlatforms = await PlatformGame.findAll({
+//         where: {
+//             gameId,
+//         },
+//     });
 
-    const platformIds = gamePlatforms.map(gamePlatform => gamePlatform.platformId);
+//     const platformIds = gamePlatforms.map(gamePlatform => gamePlatform.platformId);
 
-    const platforms = await Platform.findAll({
-        where: {id: platformIds}
-    })
+//     const platforms = await Platform.findAll({
+//         where: {id: platformIds}
+//     })
 
-    return res.json(platforms)
-}))
+//     return res.json(platforms)
+// }))
 
 // get all events for a single game
 router.get('/game/:gameId', asyncHandler(async (req, res) => {
     const gameId = +req.params.gameId;
-    const rsvps = 
+    const events = Event.findAll({
+        where: {
+            gameId
+        }
+    })
+    return res.json(events)
 }))
 
 
