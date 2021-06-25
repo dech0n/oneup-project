@@ -116,3 +116,38 @@
   .react-calendar--selectRange .react-calendar__tile--hover {
     background-color: #e6e6e6;
   }
+
+
+  /* //     // 2021-06-22T08:25:48.893Z <-- event.date format
+    //     const getEventDates = async () => {
+    //         const dates = await events.map(event => event.date.slice(0, 10).split('-'))
+    //         await setDates(dates)
+    //     }
+    //     // getEventDates()
+
+    //     return () => { }
+    //     // data leak when I add events to dependency array
+    // }, [id])
+
+    // // OR just have the DB store dates as milliseconds ?
+    // const getDate = (date, type) => {
+    //     switch (type.toLowerCase()) {
+    //         case 'day':
+    //             const day = date[2].slice(0)
+    //             return +day
+    //         case 'month':
+    //             const month = date[1].slice(0)
+    //             return +month
+    //         case 'year':
+    //             const year = date[0].slice(0)
+    //             return +year
+    //         default:
+    //             return date;
+    //     }
+    // }
+
+    // const addToCalendar = async ({ date, view }) => {
+    //     return await view === 'month' && date.getDate() === getDate(dates[0], 'day') ? <p>Event Today!</p> : null
+    //     // console.log('DATE', date)
+    //     // console.log('VIEW', view)
+    // } */

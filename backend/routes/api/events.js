@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
+// const sequelize = require('sequelize')
 const { Event, RSVP, Game, User } = require('../../db/models');
-const sequelize = require('sequelize')
 
 const router = express.Router();
 
@@ -10,24 +10,6 @@ router.get('/', asyncHandler(async (req, res) => {
     const events = await Event.findAll();
     return res.json(events);
 }));
-
-//? for reference: querying joins table
-// router.get('/game/:gameId', asyncHandler(async (req, res) => {
-//     const {gameId} = req.params;
-//     const gamePlatforms = await PlatformGame.findAll({
-//         where: {
-//             gameId,
-//         },
-//     });
-
-//     const platformIds = gamePlatforms.map(gamePlatform => gamePlatform.platformId);
-
-//     const platforms = await Platform.findAll({
-//         where: {id: platformIds}
-//     })
-
-//     return res.json(platforms)
-// }))
 
 // get all events for a single game
 router.get('/game/:gameId', asyncHandler(async (req, res) => {
@@ -40,9 +22,9 @@ router.get('/game/:gameId', asyncHandler(async (req, res) => {
     return await res.json(events)
 }))
 
-router.post('/game/:gameId', asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
     console.log('***REQ***', req)
-    const hostId = 0; //! get actual userId
+    const hostId = 0; //! get actual userId from state.session
     const {
         gameId,
         name,
@@ -57,6 +39,7 @@ router.post('/game/:gameId', asyncHandler(async (req, res) => {
         date,
         capacity
     })
+
 }))
 
 module.exports = router;

@@ -1,39 +1,40 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { createEvent } from '../../store/events';
 
-function NewEventForm({ id }) {
-    //name, date, capacity, description
+function NewEventForm({ gameId, hostId, hideForm }) {
+    const dispatch = useDispatch();
+    const history = useHistory();
     const [name, setName] = useState('');
     const [date, setDate] = useState();
     const [capacity, setCapacity] = useState(0);
     const [description, setDescription] = useState('')
 
-
-
-
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         const newEventData = {
-            gameId: id,
+            hostId,
+            gameId,
             name,
             date,
             capacity,
             description
         }
 
-        await fetch(`api/events/game/${id}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newEventData)
-        })
+        // send the data to the store via thunk
+        const event = await dispatch(createEvent(newEventData))
+        if (event) {
+            hideForm()
+        }
     }
 
     return (
         <>
             <h1>New Event</h1>
             <div id='new-event-form-container'>
-                <form
-                    onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <div className='label-container'>
                         <label>Title</label>
                         <input
@@ -70,6 +71,9 @@ function NewEventForm({ id }) {
                     </div>
                 </form>
                 <button type='submit'>Create</button>
+                <button
+                type='button'
+                onClick={hideForm}>Cancel</button>
             </div>
         </>
     )
