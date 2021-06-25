@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf';
+
 //ACTIONS
 const LOAD = 'events/LOAD';
 const ADD_ONE = 'events/ADD_ONE';
@@ -38,7 +40,7 @@ export const getSingleGameEvents = (gameId) => async(dispatch) => {
 }
 
 export const createEvent = (eventData) => async (dispatch) => {
-    const res = await fetch(`api/events`, {
+    const res = await csrfFetch(`/api/events`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(eventData)

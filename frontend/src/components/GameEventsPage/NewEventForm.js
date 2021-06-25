@@ -12,7 +12,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
     const [description, setDescription] = useState('')
 
     const handleSubmit = async (e) => {
-        // e.preventDefault();
+        e.preventDefault();
 
         const newEventData = {
             hostId,
@@ -69,11 +69,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)} />
                     </div>
+                    <button type='submit'>Create</button>
+                    <button
+                        type='button'
+                        onClick={hideForm}>Cancel</button>
                 </form>
-                <button type='submit'>Create</button>
-                <button
-                type='button'
-                onClick={hideForm}>Cancel</button>
             </div>
         </>
     )

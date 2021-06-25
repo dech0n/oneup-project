@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import Calendar from 'react-calendar'
 
 import { getEvents, getSingleGameEvents } from '../../store/events';
@@ -30,7 +30,10 @@ function GameEventsPage({ id }) {
     const userId = useSelector(state => state.session.user.id)
 
     useEffect(() => {
-        dispatch(getSingleGameEvents(id))
+        let unmounted = false;
+        if (!unmounted)
+            dispatch(getSingleGameEvents(id))
+        return () => { unmounted = true }
     }, [dispatch, id])
 
     return (
@@ -46,8 +49,7 @@ function GameEventsPage({ id }) {
             >New Event</button>
             {showForm ? (
                 <>
-                {/* pass in a prop to handle cancel button inside form */}
-                    <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowForm(false)}/>
+                    <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowForm(false)} />
                 </>
             ) :
                 events?.map(event => (
@@ -59,7 +61,7 @@ function GameEventsPage({ id }) {
                         <button>RSVP</button>
                     </ul>
                 ))
-                }
+            }
         </div>
     )
 }

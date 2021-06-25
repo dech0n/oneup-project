@@ -23,13 +23,13 @@ router.get('/game/:gameId', asyncHandler(async (req, res) => {
 }))
 
 router.post('/', asyncHandler(async (req, res) => {
-    console.log('***REQ***', req)
-    const hostId = 0; //! get actual userId from state.session
     const {
+        hostId,
         gameId,
         name,
         date,
-        capacity
+        capacity,
+        description
     } = req.body;
 
     Event.create({
@@ -37,9 +37,9 @@ router.post('/', asyncHandler(async (req, res) => {
         gameId,
         name,
         date,
-        capacity
+        capacity,
+        description
     })
-
 }))
 
 module.exports = router;
