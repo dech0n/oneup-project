@@ -4,7 +4,8 @@ import { useParams, Route } from 'react-router-dom';
 import GameEventsPage from '../GameEventsPage';
 import GameHeader from './GameHeader';
 import GameNavbar from './GameNavbar';
-import GameContent from './GameContent';
+import GameContent from './GameContent'
+import Calendar from 'react-calendar';
 import './SingleGamePage.css';
 
 function SingleGamePage() {
@@ -43,7 +44,7 @@ function SingleGamePage() {
                 <GameNavbar id={id} />
                 <Route exact path={`/games/${id}/events`}>
                     {/* use context to pass the game and platform info ? */}
-                    <GameEventsPage />
+                    <GameEventsPage id={id} />
                 </Route>
                 <Route exact path={`/games/${id}`}>
                     <GameContent game={game} />
