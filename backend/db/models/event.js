@@ -9,9 +9,15 @@ module.exports = (sequelize, DataTypes) => {
     description: DataTypes.STRING
   }, {});
   Event.associate = function(models) {
+    const columnMapping = {
+      through: 'RSVPs',
+      foreignKey: 'eventId',
+      otherKey: 'gamertagId'
+    }
+
     Event.belongsTo(models.User, {foreignKey: 'hostId'});
     Event.belongsTo(models.Game, {foreignKey: 'gameId'});
-    Event.hasMany(models.RSVP, {foreignKey: 'eventId'});
+    Event.belongsToMany(models.Gamertag, columnMapping);
   };
   return Event;
 };

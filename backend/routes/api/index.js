@@ -3,7 +3,7 @@ const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const gamesRouter = require('./games.js')
 const platformsRouter = require('./platforms.js')
-const platformgamesRouter = require('./platformgames.js')
+const eventsRouter = require('./events.js')
 
 //! testing only
 // router.post('/test', function(req, res) {
@@ -18,6 +18,6 @@ router.use('/games', gamesRouter)
 
 router.use('/platforms', platformsRouter)
 
-router.use('/platformgames', platformgamesRouter)
+router.use('/events', eventsRouter)
 
 module.exports = router;
