@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 //ACTIONS
 const LOAD = 'events/LOAD';
 const ADD_ONE = 'events/ADD_ONE';
+const REMOVE_EVENT = 'events/REMOVE_EVENT';
 
 //ACTION CREATORS
 // for getting multiple events
@@ -16,6 +17,11 @@ const load = (events) => ({
 const addOneEvent = (event) => ({
     type: ADD_ONE,
     event // payload
+})
+
+const removeEvent = (event) => ({
+    type: REMOVE_EVENT,
+    event
 })
 
 //THUNKS
@@ -45,6 +51,7 @@ export const createEvent = (eventData) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(eventData)
     })
+    // console.log('RES', res)
     if (res.ok) {
         const newEvent = await res.json()
         dispatch(addOneEvent(newEvent))
@@ -52,12 +59,27 @@ export const createEvent = (eventData) => async (dispatch) => {
     }
 }
 
-const initialState = {}
+export const updateEvent = (id, eventData) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(eventData)
+    });
+    if (res.ok) {
+        const updatedEvent = await res.json();
+        dispatch(addOneEvent(updatedEvent));
+        return updatedEvent;
+    }
+}
+
+const initialState = {};
 const eventsReducer = (state = initialState, action) => {
+    // console.log('REDUCER THING', action)
     switch (action.type) {
         case LOAD:
             const allEvents = {};
             action.events.forEach(event => allEvents[event.id] = event);
+            console.log({...allEvents, ...state, list: action.events})
             return {
                 ...allEvents,
                 ...state,
@@ -74,6 +96,7 @@ const eventsReducer = (state = initialState, action) => {
                 const eventsList = newState.list.map(id => newState[id]);
                 eventsList.push(action.event);
                 newState.list = eventsList;
+                console.log('NEWSTATE', newState)
                 return newState;
             }
             // for updating existing events
@@ -84,6 +107,9 @@ const eventsReducer = (state = initialState, action) => {
                     ...action.event, // overwrite with any details that were changed
                 }
             }
+        case REMOVE_EVENT:
+
+            break;
         case '':
 
             break;

@@ -4,38 +4,23 @@ import Calendar from 'react-calendar'
 
 import { getEvents, getSingleGameEvents } from '../../store/events';
 import NewEventForm from './NewEventForm';
+import EditEventForm from './EditEventForm';
 import './GameEventsPage.css'
 import './Calendar.css'
 
 function GameEventsPage({ id }) {
-    // NON-REDUX STATE VERSION
-    // const [events, setEvents] = useState(null);
-    // const [dates, setDates] = useState(null);
-    // const [showForm, setShowForm] = useState(false)
-
-    // useEffect(() => {
-    //     const getGameEvents = async () => {
-    //         const res = await fetch(`/api/events/game/${id}`)
-    //         if (res.ok) {
-    //             const events = await res.json()
-    //             await setEvents(events)
-    //         }
-    //     }
-    //     getGameEvents()
-
-    // REDUX VERSION
-    const [showForm, setShowForm] = useState(false)
+    const [showNewForm, setShowNewForm] = useState(false)
+    const [showEditForm, setShowEditForm] = useState(false)
     const dispatch = useDispatch();
     const events = useSelector(state => state.events.list)
     const userId = useSelector(state => state.session.user.id)
 
     useEffect(() => {
-        let unmounted = false;
-        if (!unmounted)
-            dispatch(getSingleGameEvents(id))
-        return () => { unmounted = true }
+        dispatch(getSingleGameEvents(id))
     }, [dispatch, id])
 
+    // const eventButtons = userId === event.hostId ? (<><button>Edit</button>
+    // <button>Delete</button></>) : (<button>RSVP</button>)
     return (
         <div id='event-page-container'>
             <h1>Hello from Game Events Page!</h1>
@@ -45,24 +30,34 @@ function GameEventsPage({ id }) {
                 />
             </div>
             <button
-                onClick={() => setShowForm(true)}
+                onClick={() => setShowNewForm(true)}
             >New Event</button>
-            {showForm ? (
+            {showNewForm ? (
                 <>
-                    <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowForm(false)} />
+                    <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowNewForm(false)} />
                 </>
             ) :
-                events?.map(event => (
-                    <ul>
-                        <li key={event.id}>{event.name}</li>
-                        <li key={event.date}>{event.date}</li>
-                        <button>Edit</button>
-                        <button>Delete</button>
-                        <button>RSVP</button>
-                    </ul>
-                ))
+                events?.map(event => {
+                    return showEditForm ? null :
+                    (
+                    <>
+                        <ul>
+                            <li key={event.id}>{event.name}</li>
+                            <li key={event.date}>{event.date}</li>
+                            <button onClick={() => setShowEditForm(true)}>Edit</button>
+                            <button>Delete</button>
+                            <button>RSVP</button>
+                        </ul>
+                    </>
+                )})
             }
-        </div>
+            {showEditForm ? (
+                <>
+                    <EditEventForm gameId={id} hostId={userId} hideForm={() => setShowEditForm(false)} />
+                </>
+            ) : null
+            }
+        </div >
     )
 }
 

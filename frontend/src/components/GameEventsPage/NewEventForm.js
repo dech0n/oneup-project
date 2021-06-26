@@ -5,7 +5,7 @@ import { createEvent } from '../../store/events';
 
 function NewEventForm({ gameId, hostId, hideForm }) {
     const dispatch = useDispatch();
-    const history = useHistory();
+    // const history = useHistory();
     const [name, setName] = useState('');
     const [date, setDate] = useState();
     const [capacity, setCapacity] = useState(0);

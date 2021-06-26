@@ -17,62 +17,62 @@ module.exports = {
       return queryInterface.bulkInsert('Games', [
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
         {
           name: faker.random.words(),
-          image: faker.image.imageUrl(475, 280, true),
+          image: faker.image.imageUrl(475, 280),
           description: faker.lorem.paragraph(6)
         } ,
     ], {});
