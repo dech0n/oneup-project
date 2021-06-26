@@ -8,10 +8,10 @@ const load = (games) => ({
     games // the payload
 });
 
-const addOneGame = (game) => ({
-    type: ADD_ONE,
-    game // payload
-})
+// const addOneGame = (game) => ({
+//     type: ADD_ONE,
+//     game // payload
+// })
 
 // *** send a fetch
 // *** check the response

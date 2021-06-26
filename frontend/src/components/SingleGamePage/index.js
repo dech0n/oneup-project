@@ -5,7 +5,7 @@ import GameEventsPage from '../GameEventsPage';
 import GameHeader from './GameHeader';
 import GameNavbar from './GameNavbar';
 import GameContent from './GameContent'
-import Calendar from 'react-calendar';
+// import Calendar from 'react-calendar';
 import './SingleGamePage.css';
 
 function SingleGamePage() {
@@ -43,7 +43,7 @@ function SingleGamePage() {
                 <GameHeader game={game} platforms={platforms} />
                 <GameNavbar id={id} />
                 <Route exact path={`/games/${id}/events`}>
-                    <GameEventsPage id={id} />
+                    <GameEventsPage id={id} game={game}/>
                 </Route>
                 <Route exact path={`/games/${id}`}>
                     <GameContent game={game} />

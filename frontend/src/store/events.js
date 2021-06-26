@@ -45,7 +45,7 @@ export const getEvents = () => async (dispatch) => {
 //     }
 // }
 
-export const getSingleGameEvents = (gameId) => async(dispatch) => {
+export const getSingleGameEvents = (gameId) => async (dispatch) => {
     const res = await csrfFetch(`/api/events/game/${gameId}`)
     if (res.ok) {
         const events = await res.json()
@@ -80,6 +80,12 @@ export const updateEvent = (id, eventData) => async (dispatch) => {
     }
 }
 
+export const deleteEvent = (id) => async (dispatch) => {
+    await csrfFetch(`/api/events/${id}`, {
+        method: 'DELETE'
+    });
+}
+
 const initialState = {};
 const eventsReducer = (state = initialState, action) => {
     // console.log('REDUCER THING', action)
@@ -87,7 +93,7 @@ const eventsReducer = (state = initialState, action) => {
         case LOAD:
             const allEvents = {};
             action.events.forEach(event => allEvents[event.id] = event);
-            console.log({...allEvents, ...state, list: action.events})
+            console.log({ ...allEvents, ...state, list: action.events })
             return {
                 ...allEvents,
                 ...state,
@@ -112,15 +118,17 @@ const eventsReducer = (state = initialState, action) => {
                 ...state,
                 [action.event.id]: {
                     ...state[action.event.id], // load the existing version
-                    ...action.event, // overwrite with any details that were changed
+                    ...action.event, // overwrite with/add any details that were changed
                 }
             }
         case REMOVE_EVENT:
+            return {
+                ...state.slice(0, action.event.id),
+                ...state.slice(action.event.id + 1)
+            }
+        // case '':
 
-            break;
-        case '':
-
-            break;
+        //     break;
 
         default:
             return state;

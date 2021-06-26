@@ -78,4 +78,19 @@ router.put('/:id', asyncHandler(async (req, res) => {
     })
 }))
 
+// delete a single event (might need to delete related RSVPs as well ?)
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const id = +req.params.id
+
+    //? delete all related RSVPs here ??
+    /* code to delete RSVPs */
+
+    Event.destroy({
+        // condition to determine which events to destroy
+        where: {
+            id
+        }
+    })
+}))
+
 module.exports = router;

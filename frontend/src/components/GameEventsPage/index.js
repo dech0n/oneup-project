@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import { Route } from 'react-router-dom';
+// import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Calendar from 'react-calendar'
 
-import { getEvents, getSingleGameEvents } from '../../store/events';
+import { getSingleGameEvents, deleteEvent } from '../../store/events';
 import NewEventForm from './NewEventForm';
 import EditEventForm from './EditEventForm';
 import './GameEventsPage.css'
 import './Calendar.css'
 
-function GameEventsPage({ id }) {
+function GameEventsPage({ id, game }) {
+     let elKey = 1000; // for element keys
+     let elKey2 = 2000; // for element keys
+     let elKey3 = 3000; // for element keys
     const [showNewForm, setShowNewForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
     const [eventId, setEventId] = useState(null)
@@ -32,12 +35,16 @@ function GameEventsPage({ id }) {
         setEventId(eventId)
     }
 
+    const handleDelete = async (eventId) => {
+        await dispatch(deleteEvent(eventId));
+    }
+
     // const eventButtons = userId === event.hostId ? (<><button>Edit</button>
     // <button>Delete</button></>) : (<button>RSVP</button>)
 
     return (
         <div id='event-page-container'>
-            <h1>Hello from Game Events Page!</h1>
+            <h1>{game?.name} Events</h1>
             <div id='calendar-container'>
                 <Calendar
                     calendarType={'US'}
@@ -57,23 +64,27 @@ function GameEventsPage({ id }) {
                     <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowNewForm(false)} />
                 </>
             ) : null}
+            <ul>
                 {events?.map(event => {
                     return showEditForm || showNewForm ? null :
-                    (
-                        <>
-                            <ul>
+                        (
+                            <>
                                 <li key={event.name}>{event.name}</li>
-                                <li key={event.date}>{event.date}</li>
-                                <button onClick={() => onlyShowEditForm(event.id)}
+                                <li key={elKey2}>{event.date}</li>
+                                <button key={elKey3} onClick={() => onlyShowEditForm(event.id)}>Edit</button>
 
-                                >Edit</button>
-                                <button>Delete</button>
-                                <button>RSVP</button>
-                            </ul>
-                        </>
-                    )
+                                <button
+                                key={event}
+                                onClick={() => handleDelete(event.id)}
+                                >Delete</button>
+
+                                <button
+                                key={++elKey}>RSVP</button>
+                            </>
+                        )
                 })
-            }
+                }
+            </ul>
         </div >
     )
 }
