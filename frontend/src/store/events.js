@@ -37,13 +37,13 @@ export const getEvents = () => async (dispatch) => {
     }
 }
 
-export const getSingleEvent = (id) => async (dispatch) => {
-    const res = await csrfFetch(`api/events/${id}`);
-    if(res.ok) {
-        const event = await res.json();
-        dispatch(load(event));
-    }
-}
+// export const getSingleEvent = (id) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/events/${id}`);
+//     if(res.ok) {
+//         const event = await res.json();
+//         dispatch(load(event));
+//     }
+// }
 
 export const getSingleGameEvents = (gameId) => async(dispatch) => {
     const res = await csrfFetch(`/api/events/game/${gameId}`)

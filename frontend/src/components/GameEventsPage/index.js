@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Route } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Calendar from 'react-calendar'
 
@@ -57,8 +58,8 @@ function GameEventsPage({ id }) {
                 </>
             ) : null}
                 {events?.map(event => {
-                    // return showEditForm ? null :
-                    return (
+                    return showEditForm || showNewForm ? null :
+                    (
                         <>
                             <ul>
                                 <li key={event.name}>{event.name}</li>

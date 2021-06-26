@@ -43,7 +43,6 @@ function SingleGamePage() {
                 <GameHeader game={game} platforms={platforms} />
                 <GameNavbar id={id} />
                 <Route exact path={`/games/${id}/events`}>
-                    {/* use context to pass the game and platform info ? */}
                     <GameEventsPage id={id} />
                 </Route>
                 <Route exact path={`/games/${id}`}>
