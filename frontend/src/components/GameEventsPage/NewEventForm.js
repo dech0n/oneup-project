@@ -5,7 +5,7 @@ import { createEvent } from '../../store/events';
 
 function NewEventForm({ gameId, hostId, hideForm }) {
     const dispatch = useDispatch();
-    // const history = useHistory();
+    const history = useHistory();
     const [name, setName] = useState('');
     const [date, setDate] = useState();
     const [capacity, setCapacity] = useState(0);
@@ -28,6 +28,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         if (event) {
             hideForm()
         }
+    }
+
+    const handleCancel = (e) => {
+        history.push(`/games/${gameId}/events`)
+        hideForm()
     }
 
     return (
@@ -72,7 +77,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                     <button type='submit'>Create</button>
                     <button
                         type='button'
-                        onClick={hideForm}>Cancel</button>
+                        onClick={handleCancel}>Cancel</button>
                 </form>
             </div>
         </>

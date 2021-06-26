@@ -11,6 +11,7 @@ import './Calendar.css'
 function GameEventsPage({ id }) {
     const [showNewForm, setShowNewForm] = useState(false)
     const [showEditForm, setShowEditForm] = useState(false)
+    // const [eventId, setEventId] = useState(null)
     const dispatch = useDispatch();
     const events = useSelector(state => state.events.list)
     const userId = useSelector(state => state.session.user.id)
@@ -19,8 +20,19 @@ function GameEventsPage({ id }) {
         dispatch(getSingleGameEvents(id))
     }, [dispatch, id])
 
+    const onlyShowNewForm = () => {
+        setShowNewForm(true);
+        setShowEditForm(false);
+    }
+
+    const onlyShowEditForm = () => {
+        setShowNewForm(false);
+        setShowEditForm(true);
+    }
+
     // const eventButtons = userId === event.hostId ? (<><button>Edit</button>
     // <button>Delete</button></>) : (<button>RSVP</button>)
+
     return (
         <div id='event-page-container'>
             <h1>Hello from Game Events Page!</h1>
@@ -30,33 +42,39 @@ function GameEventsPage({ id }) {
                 />
             </div>
             <button
-                onClick={() => setShowNewForm(true)}
+                onClick={onlyShowNewForm}
             >New Event</button>
             {showNewForm ? (
                 <>
                     <NewEventForm gameId={id} hostId={userId} hideForm={() => setShowNewForm(false)} />
                 </>
+            ) :(showEditForm ? (
+                <>
+                    <EditEventForm gameId={id} hostId={userId} hideForm={() => setShowEditForm(false)} />
+                </>
             ) :
                 events?.map(event => {
-                    return showEditForm ? null :
-                    (
+                    // return showEditForm ? null :
+                    return (
                     <>
                         <ul>
-                            <li key={event.id}>{event.name}</li>
+                            <li key={event.name}>{event.name}</li>
                             <li key={event.date}>{event.date}</li>
-                            <button onClick={() => setShowEditForm(true)}>Edit</button>
+                            <button onClick={onlyShowEditForm}
+
+                            >Edit</button>
                             <button>Delete</button>
                             <button>RSVP</button>
                         </ul>
                     </>
-                )})
+                )}))
             }
-            {showEditForm ? (
+            {/* {showEditForm ? (
                 <>
                     <EditEventForm gameId={id} hostId={userId} hideForm={() => setShowEditForm(false)} />
                 </>
             ) : null
-            }
+            } */}
         </div >
     )
 }
