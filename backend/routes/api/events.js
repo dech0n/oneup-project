@@ -11,17 +11,7 @@ router.get('/', asyncHandler(async (req, res) => {
     return res.json(events);
 }));
 
-// get all events for a single game
-router.get('/game/:gameId', asyncHandler(async (req, res) => {
-    const gameId = +req.params.gameId;
-    const events = await Event.findAll({
-        where: {
-            gameId,
-        },
-    })
-    return await res.json(events)
-}))
-
+// create a single event
 router.post('/', asyncHandler(async (req, res) => {
     const {
         hostId,
@@ -42,6 +32,25 @@ router.post('/', asyncHandler(async (req, res) => {
     })
 }))
 
+// get all events for a single game
+router.get('/game/:gameId', asyncHandler(async (req, res) => {
+    const gameId = +req.params.gameId;
+    const events = await Event.findAll({
+        where: {
+            gameId,
+        },
+    })
+    return await res.json(events)
+}))
+
+// get a single event
+router.get('/:id', asyncHandler(async (req, res) => {
+    const id = +req.params.id;
+    const event = await Event.findByPk(id);
+    return await res.json(event)
+}))
+
+// update a single event
 router.put('/:id', asyncHandler(async (req, res) => {
     const id = +req.params.id
     const {
@@ -54,6 +63,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
     } = req.body;
 
     Event.update({
+        // attributes to update
         hostId,
         gameId,
         name,
@@ -61,6 +71,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
         capacity,
         description
     }, {
+        // condition to determine which events to update
         where: {
             id
         }

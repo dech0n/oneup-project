@@ -25,20 +25,28 @@ const removeEvent = (event) => ({
 })
 
 //THUNKS
-// *** send a fetch
+// *** send a csrfFetch
 // *** check the response
 // *** parse the response
 // *** dispatch an action
 export const getEvents = () => async (dispatch) => {
-    const res = await fetch(`/api/events`);
+    const res = await csrfFetch(`/api/events`);
     if (res.ok) {
         const events = await res.json();
         dispatch(load(events))
     }
 }
 
+export const getSingleEvent = (id) => async (dispatch) => {
+    const res = await csrfFetch(`api/events/${id}`);
+    if(res.ok) {
+        const event = await res.json();
+        dispatch(load(event));
+    }
+}
+
 export const getSingleGameEvents = (gameId) => async(dispatch) => {
-    const res = await fetch(`/api/events/game/${gameId}`)
+    const res = await csrfFetch(`/api/events/game/${gameId}`)
     if (res.ok) {
         const events = await res.json()
         dispatch(load(events))
