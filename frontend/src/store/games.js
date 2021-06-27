@@ -49,7 +49,7 @@ const gamesReducer = (state = intialState, action) => {
             return {
                 ...allGames,
                 ...state,
-                games: action.games
+                list: action.games
             }
 
         case ADD_ONE:
@@ -58,9 +58,9 @@ const gamesReducer = (state = intialState, action) => {
                     ...state,
                     [action.game.id]: action.game
                 };
-                const gamesList = newState.games.map(id => newState[id]);
+                const gamesList = newState.list.map(id => newState[id]);
                 gamesList.push(action.game);
-                newState.games = gamesList;
+                newState.list = gamesList;
                 return newState;
             }
             return {
