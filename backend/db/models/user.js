@@ -56,7 +56,7 @@ module.exports = (sequelize, DataTypes) => {
     }
 
     User.belongsToMany(models.Game, columnMapping);
-    User.hasMany(models.Gamertag, {foreignKey: 'gamertagId'});
+    User.hasMany(models.Gamertag, {foreignKey: 'userId'});
     User.hasMany(models.Event, {foreignKey: 'hostId'})
   };
 

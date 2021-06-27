@@ -8,7 +8,7 @@ const router = express.Router();
 // get all events
 router.get('/', asyncHandler(async (req, res) => {
     const events = await Event.findAll();
-    console.log('EVENT TYPE', typeof events)
+    // console.log('EVENT TYPE', typeof events)
     return res.json(events);
 }));
 
@@ -24,7 +24,7 @@ router.post('/', asyncHandler(async (req, res) => {
         description
     } = req.body;
 
-    Event.create({
+    await Event.create({
         hostId,
         gameId,
         platformId,
@@ -66,7 +66,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
         description
     } = req.body;
 
-    Event.update({
+    await Event.update({
         // attributes to update
         hostId,
         gameId,
@@ -90,24 +90,12 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     //? delete all related RSVPs here ??
     /* code to delete RSVPs */
 
-    Event.destroy({
+    await Event.destroy({
         // condition to determine which events to destroy
         where: {
             id
         }
     })
-}))
-
-// handle RSVP to a single event
-router.post('/:id/rsvp', asyncHandler(async (req, res) => {
-    const id = +req.params.id
-
-    // const gamertag = Gamertag.findOne({
-    //     where: {
-    //         userId: ,
-    //         platformId:
-    //     }
-    // })
 }))
 
 module.exports = router;
