@@ -10,11 +10,13 @@ module.exports = {
       },
       eventId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Events'}
       },
       gamertagId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Gamertags'}
       },
       createdAt: {
         allowNull: false,

@@ -10,11 +10,18 @@ module.exports = {
       },
       hostId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Users'}
       },
       gameId: {
         allowNull: false,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {model: 'Games'}
+      },
+      platformId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model: 'Platforms'}
       },
       name: {
         allowNull: false,

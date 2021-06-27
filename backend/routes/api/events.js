@@ -1,13 +1,14 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 // const sequelize = require('sequelize')
-const { Event, RSVP, Game, User } = require('../../db/models');
+const { Event, RSVP, Gamertag, Game, User } = require('../../db/models');
 
 const router = express.Router();
 
 // get all events
 router.get('/', asyncHandler(async (req, res) => {
     const events = await Event.findAll();
+    console.log('EVENT TYPE', typeof events)
     return res.json(events);
 }));
 
@@ -16,6 +17,7 @@ router.post('/', asyncHandler(async (req, res) => {
     const {
         hostId,
         gameId,
+        platformId,
         name,
         date,
         capacity,
@@ -25,6 +27,7 @@ router.post('/', asyncHandler(async (req, res) => {
     Event.create({
         hostId,
         gameId,
+        platformId,
         name,
         date,
         capacity,
@@ -56,6 +59,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
     const {
         hostId,
         gameId,
+        platformId,
         name,
         date,
         capacity,
@@ -66,6 +70,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
         // attributes to update
         hostId,
         gameId,
+        platformId,
         name,
         date,
         capacity,
@@ -91,6 +96,18 @@ router.delete('/:id', asyncHandler(async (req, res) => {
             id
         }
     })
+}))
+
+// handle RSVP to a single event
+router.post('/:id/rsvp', asyncHandler(async (req, res) => {
+    const id = +req.params.id
+
+    // const gamertag = Gamertag.findOne({
+    //     where: {
+    //         userId: ,
+    //         platformId:
+    //     }
+    // })
 }))
 
 module.exports = router;

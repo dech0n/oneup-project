@@ -7,7 +7,7 @@ const router = express.Router();
 // get all platforms
 router.get('/', asyncHandler(async (req, res) => {
     const platforms = await Platform.findAll();
-    return res.json(platforms);
+    return await res.json(platforms);
 }))
 
 // get all platforms for a specific game
