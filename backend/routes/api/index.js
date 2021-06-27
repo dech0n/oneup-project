@@ -5,6 +5,7 @@ const gamesRouter = require('./games.js')
 const platformsRouter = require('./platforms.js')
 const eventsRouter = require('./events.js')
 const rsvpsRouter = require('./rsvps.js')
+const userGamesRouter = require('./userGames.js')
 const gamertagsRouter = require('./gamertags.js')
 
 //! testing only
@@ -23,6 +24,8 @@ router.use('/platforms', platformsRouter)
 router.use('/events', eventsRouter)
 
 router.use('/rsvps', rsvpsRouter)
+
+router.use('/userGames', userGamesRouter)
 
 router.use('/gamertags', gamertagsRouter)
 

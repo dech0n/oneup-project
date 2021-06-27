@@ -5,6 +5,7 @@ import gamesReducer from "./games";
 import eventsReducer from "./events";
 import platformsReducer from "./platforms";
 import rsvpsReducer from "./rsvps";
+import userGamesReducer from "./userGames";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   events: eventsReducer,
   platforms: platformsReducer,
   rsvps: rsvpsReducer,
+  userGames: userGamesReducer,
 });
 
 let enhancer;
