@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
   const Event = sequelize.define('Event', {
     hostId: DataTypes.INTEGER,
     gameId: DataTypes.INTEGER,
+    platformId: DataTypes.INTEGER,
     name: DataTypes.STRING,
     date: {
       type: DataTypes.DATE,
@@ -25,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Event.belongsTo(models.User, { foreignKey: 'hostId' });
     Event.belongsTo(models.Game, { foreignKey: 'gameId' });
+    Event.belongsTo(models.Platform, { foreignKey: 'platformId' });
     Event.belongsToMany(models.Gamertag, columnMapping);
   };
   return Event;

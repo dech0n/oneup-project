@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Platform.belongsToMany(models.Game, columnMapping)
     Platform.hasMany(models.Gamertag, {foreignKey: 'platformId'});
+    Platform.hasMany(models.Event, {foreignKey: 'platformId'});
   };
   return Platform;
 };

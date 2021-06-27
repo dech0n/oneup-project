@@ -3,6 +3,7 @@ import { csrfFetch } from './csrf';
 //ACTIONS
 const LOAD = 'events/LOAD';
 const ADD_ONE = 'events/ADD_ONE';
+const REMOVE_EVENT = 'events/REMOVE_EVENT';
 
 //ACTION CREATORS
 // for getting multiple events
@@ -18,21 +19,34 @@ const addOneEvent = (event) => ({
     event // payload
 })
 
+const removeEvent = (event) => ({
+    type: REMOVE_EVENT,
+    event
+})
+
 //THUNKS
-// *** send a fetch
+// *** send a csrfFetch
 // *** check the response
 // *** parse the response
 // *** dispatch an action
 export const getEvents = () => async (dispatch) => {
-    const res = await fetch(`/api/events`);
+    const res = await csrfFetch(`/api/events`);
     if (res.ok) {
         const events = await res.json();
         dispatch(load(events))
     }
 }
 
-export const getSingleGameEvents = (gameId) => async(dispatch) => {
-    const res = await fetch(`/api/events/game/${gameId}`)
+// export const getSingleEvent = (id) => async (dispatch) => {
+//     const res = await csrfFetch(`/api/events/${id}`);
+//     if(res.ok) {
+//         const event = await res.json();
+//         dispatch(load(event));
+//     }
+// }
+
+export const getSingleGameEvents = (gameId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/game/${gameId}`)
     if (res.ok) {
         const events = await res.json()
         dispatch(load(events))
@@ -45,6 +59,7 @@ export const createEvent = (eventData) => async (dispatch) => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(eventData)
     })
+    // console.log('RES', res)
     if (res.ok) {
         const newEvent = await res.json()
         dispatch(addOneEvent(newEvent))
@@ -52,12 +67,33 @@ export const createEvent = (eventData) => async (dispatch) => {
     }
 }
 
-const initialState = {}
+export const updateEvent = (id, eventData) => async (dispatch) => {
+    const res = await csrfFetch(`/api/events/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(eventData)
+    });
+    if (res.ok) {
+        const updatedEvent = await res.json();
+        dispatch(addOneEvent(updatedEvent));
+        return updatedEvent;
+    }
+}
+
+export const deleteEvent = (id) => async (dispatch) => {
+    await csrfFetch(`/api/events/${id}`, {
+        method: 'DELETE'
+    });
+}
+
+const initialState = {};
 const eventsReducer = (state = initialState, action) => {
+    // console.log('REDUCER THING', action)
     switch (action.type) {
         case LOAD:
             const allEvents = {};
             action.events.forEach(event => allEvents[event.id] = event);
+            // console.log({ ...allEvents, ...state, list: action.events })
             return {
                 ...allEvents,
                 ...state,
@@ -74,6 +110,7 @@ const eventsReducer = (state = initialState, action) => {
                 const eventsList = newState.list.map(id => newState[id]);
                 eventsList.push(action.event);
                 newState.list = eventsList;
+                console.log('NEWSTATE', newState)
                 return newState;
             }
             // for updating existing events
@@ -81,12 +118,17 @@ const eventsReducer = (state = initialState, action) => {
                 ...state,
                 [action.event.id]: {
                     ...state[action.event.id], // load the existing version
-                    ...action.event, // overwrite with any details that were changed
+                    ...action.event, // overwrite with/add any details that were changed
                 }
             }
-        case '':
+        case REMOVE_EVENT:
+            return {
+                ...state.slice(0, action.event.id),
+                ...state.slice(action.event.id + 1)
+            }
+        // case '':
 
-            break;
+        //     break;
 
         default:
             return state;
