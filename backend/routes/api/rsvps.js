@@ -8,7 +8,7 @@ const router = express.Router();
 // get all RSVPs
 router.get('/', asyncHandler(async (req, res) => {
     const rsvps = await RSVP.findAll();
-    console.log('EVENT TYPE', typeof rsvps)
+    // console.log('RSVP TYPE', typeof rsvps)
     return res.json(rsvps);
 }))
 
@@ -20,7 +20,8 @@ router.get('/:id', asyncHandler(async (req, res) => {
 }))
 
 // create a single rsvp
-router.post('/event/:eventId', asyncHandler(async (req, res) => {
+router.post('/', asyncHandler(async (req, res) => {
+    //! might have to update route to include eventId
     const {
         eventId,
         gamertagId
@@ -41,6 +42,21 @@ router.get('/event/:eventId', asyncHandler(async (req, res) => {
         },
     })
     return await res.json(rsvps)
+}))
+
+// delete a single rsvp (might need to delete related RSVPs as well ?)
+router.delete('/:id', asyncHandler(async (req, res) => {
+    const id = +req.params.id
+
+    //? delete all related RSVPs here ??
+    /* code to delete RSVPs */
+
+    RSVP.destroy({
+        // condition to determine which rsvps to destroy
+        where: {
+            id
+        }
+    })
 }))
 
 module.exports = router;

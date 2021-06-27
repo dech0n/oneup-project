@@ -27,6 +27,8 @@ const removeRsvp = (rsvp) => ({
 // *** check the response
 // *** parse the response
 // *** dispatch an action
+
+// get all RSVPs
 export const getRsvps = () => async (dispatch) => {
     const res = await csrfFetch(`/api/rsvps`);
     if (res.ok) {
@@ -35,6 +37,7 @@ export const getRsvps = () => async (dispatch) => {
     }
 }
 
+// get one RSVP
 export const getSingleRsvp = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/rsvps/${id}`);
     if(res.ok) {
@@ -43,16 +46,19 @@ export const getSingleRsvp = (id) => async (dispatch) => {
     }
 }
 
-export const getSingleGameRsvps = (gameId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/rsvps/game/${gameId}`)
+// get all RSVPs for a single event
+export const getSingleEventRsvps = (eventId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/rsvps/event/${eventId}`)
     if (res.ok) {
         const rsvps = await res.json()
         dispatch(load(rsvps))
     }
 }
 
+// create a single RSVP
 export const createRsvp = (rsvpData) => async (dispatch) => {
     const res = await csrfFetch(`/api/rsvps`, {
+        //! might have to include eventId in route and parameters
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rsvpData)
@@ -63,6 +69,12 @@ export const createRsvp = (rsvpData) => async (dispatch) => {
         dispatch(addOneRsvp(newRsvp))
         return newRsvp;
     }
+}
+
+export const deleteRsvp = (id) => async (dispatch) => {
+    await csrfFetch(`/api/rsvps/${id}`, {
+        method: 'DELETE'
+    });
 }
 
 const initialState = {};
