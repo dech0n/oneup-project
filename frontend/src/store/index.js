@@ -4,12 +4,14 @@ import sessionReducer from "./session";
 import gamesReducer from "./games";
 import eventsReducer from "./events";
 import platformsReducer from "./platforms";
+import rsvpsReducer from "./rsvps";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   games: gamesReducer,
   events: eventsReducer,
   platforms: platformsReducer,
+  rsvps: rsvpsReducer,
 });
 
 let enhancer;

@@ -71,9 +71,13 @@ export const createRsvp = (rsvpData) => async (dispatch) => {
 }
 
 export const deleteRsvp = (id) => async (dispatch) => {
-    await csrfFetch(`/api/rsvps/${id}`, {
+    const res = await csrfFetch(`/api/rsvps/${id}`, {
         method: 'DELETE'
     });
+    if (res.ok) {
+        const rsvp = await res.json()
+        dispatch(removeRsvp(rsvp))
+    }
 }
 
 const initialState = {};

@@ -20,6 +20,11 @@ module.exports = {
         userId: 1,
         tag: faker.lorem.word()
       },
+      {//2
+        platformId: 3,
+        userId: 1,
+        tag: faker.lorem.word()
+      },
       {//3
         platformId: 4,
         userId: 1,

@@ -28,23 +28,21 @@ router.post('/', asyncHandler(async (req, res) => {
         // gamertagId
     } = req.body;
 
-    //TODO: take the userId & platformId, use them to create a query for the user's gamertag on the given platform
-
-
-    const gamertag = await Gamertag.findAll({
+    // get the appropriate gamertag that matches the current user and the platform of the event to which they rsvp
+    const gamertag = await Gamertag.findOne({
         where: {
             platformId,
             userId
         },
-        // include: Platform, User
+        raw: true
     })
 
     const gamertagId = gamertag.id;
-    console.log('GAMERTAGID', gamertagId)
 
-    await RSVP.create({
+
+    return await RSVP.create({
         eventId,
-        gamertagId // retrieved from the above TODO query instead of the payload
+        gamertagId
     })
 }))
 

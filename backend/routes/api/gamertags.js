@@ -1,3 +1,4 @@
+//! This file is unused
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 // const sequelize = require('sequelize')
@@ -10,5 +11,10 @@ router.get('/', asyncHandler(async (req, res) => {
     const gamertags = await Gamertag.findAll();
     res.json(gamertags)
 }))
+
+// get specific gamertag
+// router.get('/:id', asyncHandler(async (req, res) => {
+//     //
+// }))
 
 module.exports = router;
