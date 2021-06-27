@@ -1,3 +1,5 @@
+import { csrfFetch } from './csrf';
+
 // actions -- declaring this way just helps avoid typos later
 const LOAD = 'games/LOAD'
 const ADD_ONE = 'games/ADD_ONE'
@@ -18,7 +20,7 @@ const load = (games) => ({
 // *** parse the response
 // *** dispatch an action
 export const getGames = () => async (dispatch) => {
-    const res = await fetch('/api/games');
+    const res = await csrfFetch('/api/games');
 
     if (res.ok) {
         const games = await res.json();
@@ -27,7 +29,7 @@ export const getGames = () => async (dispatch) => {
 }
 
 export const getSingleGame = (id) => async (dispatch) => {
-    const res = await fetch(`api/games/${id}`);
+    const res = await csrfFetch(`api/games/${id}`);
 
     if (res.ok) {
         const game = await res.json();
@@ -47,7 +49,7 @@ const gamesReducer = (state = intialState, action) => {
             return {
                 ...allGames,
                 ...state,
-                games: action.games
+                list: action.games
             }
 
         case ADD_ONE:
@@ -56,9 +58,9 @@ const gamesReducer = (state = intialState, action) => {
                     ...state,
                     [action.game.id]: action.game
                 };
-                const gamesList = newState.games.map(id => newState[id]);
+                const gamesList = newState.list.map(id => newState[id]);
                 gamesList.push(action.game);
-                newState.games = gamesList;
+                newState.list = gamesList;
                 return newState;
             }
             return {

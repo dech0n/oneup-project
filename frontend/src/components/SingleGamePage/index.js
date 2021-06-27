@@ -41,7 +41,7 @@ function SingleGamePage() {
         <>
             <div id='game-page-container'>
                 <GameHeader game={game} platforms={platforms} />
-                <GameNavbar id={id} />
+                <GameNavbar gameId={id} />
                 <Route exact path={`/games/${id}/events`}>
                     <GameEventsPage gameId={id} game={game}/>
                 </Route>
