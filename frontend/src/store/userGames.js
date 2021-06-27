@@ -41,15 +41,26 @@ export const getUserGames = () => async (dispatch) => {
 // get one UserGame
 export const getSingleUserGame = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/userGames/${id}`);
-    if(res.ok) {
+    if (res.ok) {
         const userGame = await res.json();
         dispatch(load(userGame));
     }
 }
 
-// get all UserGames for a single event
-export const getSingleEventUserGames = (eventId) => async (dispatch) => {
-    const res = await csrfFetch(`/api/userGames/event/${eventId}`)
+// get all UserGames for a single game
+//i.e. all users that have joined a specific game
+export const getSingleGameUserGames = (gameId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/userGames/game/${gameId}`)
+    if (res.ok) {
+        const userGames = await res.json()
+        dispatch(load(userGames))
+    }
+}
+
+// get all UserGames for a single user
+// i.e. all games a user has joined
+export const getSingleUserUserGames = (userId) => async (dispatch) => {
+    const res = await csrfFetch(`/api/userGames/user/${userId}`)
     if (res.ok) {
         const userGames = await res.json()
         dispatch(load(userGames))
@@ -71,6 +82,7 @@ export const createUserGame = (userGameData) => async (dispatch) => {
     }
 }
 
+// delete single userGame
 export const deleteUserGame = (id) => async (dispatch) => {
     const res = await csrfFetch(`/api/userGames/${id}`, {
         method: 'DELETE'
