@@ -57,7 +57,7 @@ router.get('/event/:eventId', asyncHandler(async (req, res) => {
     return await res.json(rsvps)
 }))
 
-// delete a single rsvp (might need to delete related RSVPs as well ?)
+// delete a single rsvp (might need to delete related stuffs as well ?)
 router.delete('/:id', asyncHandler(async (req, res) => {
     const id = +req.params.id
 
