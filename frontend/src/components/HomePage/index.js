@@ -19,16 +19,22 @@ function HomePage() {
                 <div id='intro-to-site'>
                     <h1>So many games, so little time!</h1>
                     <p>Join a game to find other players and schedule online gaming events.</p>
-                    <ul>
-                        <li>TEST</li>
-                        {games?.map(game => (
-                            <li key={game.id}>{game.name}</li>
-                        ))}
-                    </ul>
                 </div>
                 <div id='intro-image'>
-                    <p>[Place Image Here]</p>
+                    <p>[Place Intro Image Here]</p>
                 </div>
+            </div>
+            <div id='list-div'>
+                <ul>
+                    <div className='game-div'>
+                        {games?.map(game => (
+                            <div className='single-game-div'>
+                                <li key={game.image}><img src={game.image} alt='game cover art' /></li>
+                                <li key={game.id}>{game.name}</li>
+                            </div>
+                        ))}
+                    </div>
+                </ul>
             </div>
         </div>
     )

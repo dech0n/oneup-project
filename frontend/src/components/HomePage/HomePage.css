@@ -1,2 +1,23 @@
 /* set baground image as old school/arcade game on every load */
 /* only set background image for home page, not others */
+
+/* #all-games-div {
+    display: inline-grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 1fr;
+} */
+
+.game-div {
+    display: flex;
+    overflow-y: auto;
+    max-width: auto;
+}
+
+.single-game-div {
+    display: flex;
+    flex-direction: column;
+}
+.single-game-div > li {
+    list-style-type: none;
+    padding-bottom: 9px;
+}
