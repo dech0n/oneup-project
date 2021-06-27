@@ -24,7 +24,7 @@ router.post('/', asyncHandler(async (req, res) => {
         description
     } = req.body;
 
-    Event.create({
+    await Event.create({
         hostId,
         gameId,
         platformId,
@@ -66,7 +66,7 @@ router.put('/:id', asyncHandler(async (req, res) => {
         description
     } = req.body;
 
-    Event.update({
+    await Event.update({
         // attributes to update
         hostId,
         gameId,
@@ -90,7 +90,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     //? delete all related RSVPs here ??
     /* code to delete RSVPs */
 
-    Event.destroy({
+    await Event.destroy({
         // condition to determine which events to destroy
         where: {
             id

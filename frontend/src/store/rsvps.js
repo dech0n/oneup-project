@@ -58,7 +58,6 @@ export const getSingleEventRsvps = (eventId) => async (dispatch) => {
 // create a single RSVP
 export const createRsvp = (rsvpData) => async (dispatch) => {
     const res = await csrfFetch(`/api/rsvps`, {
-        //! might have to include eventId in route and parameters
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(rsvpData)

@@ -1,7 +1,7 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
 // const sequelize = require('sequelize')
-const { RSVP, Event, Gamertag, Game, User } = require('../../db/models');
+const { RSVP, Event, Gamertag, Game, User, Platform } = require('../../db/models');
 
 const router = express.Router();
 
@@ -21,15 +21,30 @@ router.get('/:id', asyncHandler(async (req, res) => {
 
 // create a single rsvp
 router.post('/', asyncHandler(async (req, res) => {
-    //! might have to update route to include eventId
     const {
+        userId,
+        platformId,
         eventId,
-        gamertagId
+        // gamertagId
     } = req.body;
 
-    RSVP.create({
+    //TODO: take the userId & platformId, use them to create a query for the user's gamertag on the given platform
+
+
+    const gamertag = await Gamertag.findAll({
+        where: {
+            platformId,
+            userId
+        },
+        // include: Platform, User
+    })
+
+    const gamertagId = gamertag.id;
+    console.log('GAMERTAGID', gamertagId)
+
+    await RSVP.create({
         eventId,
-        gamertagId
+        gamertagId // retrieved from the above TODO query instead of the payload
     })
 }))
 
@@ -51,7 +66,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
     //? delete all related RSVPs here ??
     /* code to delete RSVPs */
 
-    RSVP.destroy({
+    await RSVP.destroy({
         // condition to determine which rsvps to destroy
         where: {
             id
