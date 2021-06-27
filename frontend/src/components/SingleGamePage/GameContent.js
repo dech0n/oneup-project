@@ -7,6 +7,9 @@ function GameContent({game}) {
     const dispatch = useDispatch();
     const userGames = useSelector(state => state.userGames.list)
     const userId = useSelector(state => state.session.user.id)
+    // TODO: get all users who match userId within userGames
+    // const joinedUsers = useSelector(state => )
+
 
     useEffect(() => {
         // get all users who have joined this game group

@@ -29,6 +29,23 @@ const validateSignup = [
     handleValidationErrors,
   ];
 
+  // get all users
+router.get('/', asyncHandler(async (req, res) => {
+  const users = await User.findAll();
+  return await res.json(users)
+}))
+
+// get single user
+router.get('/:id', asyncHandler(async (req, res) => {
+  const id = +req.params.id;
+  const user = await User.findOne({
+    where: {
+      id
+    }
+  })
+  return await res.json(user)
+}))
+
 // signup
 router.post(
     '/',
