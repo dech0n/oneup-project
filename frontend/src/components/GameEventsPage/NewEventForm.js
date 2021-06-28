@@ -39,8 +39,8 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         const event = await dispatch(createEvent(newEventData))
         // if (event) {
             // history.push(`/games/${gameId}/events`)
-            hideForm()
             dispatch(getEvents())
+            hideForm()
         // }
     }
 

@@ -4,7 +4,7 @@ function GameHeader({game, platforms}) {
     return (
         <div id='group-game-header'>
             <div id='game-image-container' >
-                <img src={game?.image} alt='game cover art' />
+                <img id='game-image' src={game?.image} alt='game cover art' />
             </div>
             <div id='basic-game-info'>
                 <div id="game-title-container">

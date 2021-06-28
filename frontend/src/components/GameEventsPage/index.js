@@ -27,6 +27,8 @@ function GameEventsPage({ gameId, game }) {
 
     useEffect(() => {
         dispatch(getSingleGameEvents(gameId))
+        setShowEditForm(false)
+        setShowNewForm(false)
     }, [dispatch, gameId])
 
     const hideForms = () => {
