@@ -2,7 +2,7 @@ h1.form-title {
     margin-top: 0px;
 }
 
-/* #new-event-form-container {
+/* #new-event-form-div {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -60,21 +60,4 @@ input {
 
 .field-container {
     padding-bottom: 10px;
-}
-
-textarea.event-input {
-    height: 100px;
-    overflow-y: auto;
-}
-textarea.event-input::-webkit-scrollbar {
-    width: 11px;
-  }
-
-textarea.event-input::-webkit-scrollbar-track {
-    background: var(--scrollbarBG);
-}
-textarea.event-input::-webkit-scrollbar-thumb {
-    background-color: var(--thumbBG) ;
-    border-radius: 6px;
-    border: 3px solid var(--scrollbarBG);
 }

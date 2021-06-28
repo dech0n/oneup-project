@@ -16,7 +16,7 @@ function EditEventForm({ gameId, hostId, hideForm, eventId }) {
     const [platformId, setPlatformId] = useState(event.platformId)
     const [name, setName] = useState(event.name);
     const [date, setDate] = useState();
-    const [capacity, setCapacity] = useState();
+    const [capacity, setCapacity] = useState(event.capacity);
     const [description, setDescription] = useState(event.description)
 
 
@@ -63,10 +63,10 @@ function EditEventForm({ gameId, hostId, hideForm, eventId }) {
             </div>
             <div id='update-event-form-container'>
                 <form onSubmit={handleSubmit}>
-                    <div className='label-container'>
-                        <div className='label-container'>
-                            <label>Platform</label>
+                    <div className='field-container'>
+                        <div className='field-container'>
                             <select
+                                className='event-input'
                                 name='platform'
                                 value={platformId}
                                 onChange={(e) => setPlatformId(e.target.value)}
@@ -79,48 +79,69 @@ function EditEventForm({ gameId, hostId, hideForm, eventId }) {
                                     </option>
                                 ))}
                             </select>
+                            <div>
+                                <label>Platform</label>
+                            </div>
                         </div>
-                        <label>Title</label>
                         <input
+                            className='event-input'
                             type='text'
                             id='name'
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             placeholder={event.name}
                             required />
+                        <div>
+                            <label>Title</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='date'>Date</label>
+                    <div className='field-container'>
                         <input
+                            className='event-input'
                             type='date'
                             id='date'
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             placeholder={event.date}
                             required />
+                        <div>
+                            <label htmlFor='date'>Date</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='capacity'>RSVP Limit</label>
+                    <div className='field-container'>
                         <input
+                            className='event-input'
                             type='number'
                             id='capacity'
                             value={capacity}
                             onChange={(e) => setCapacity(e.target.value)}
                             placeholder={event.capacity}
                             required />
+                        <div>
+                            <label htmlFor='capacity'>RSVP Limit</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='capacity'>Description</label>
+                    <div className='field-container'>
                         <textarea
+                            className='event-input'
                             id='description'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                             placeholder={event.description} />
+                        <div>
+                            <label
+                            htmlFor='capacity'>Description</label>
+                        </div>
                     </div>
-                    <button type='submit'>Update</button>
-                    <button
-                        type='button'
-                        onClick={handleCancel}>Cancel</button>
+                    <div className='form-buttons'>
+                        <button
+                        className='form-button'
+                        type='submit'>Update</button>
+                        <button
+                            className='form-button'
+                            type='button'
+                            onClick={handleCancel}>Cancel</button>
+                    </div>
                 </form>
             </div>
         </>

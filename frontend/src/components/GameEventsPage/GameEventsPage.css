@@ -1,5 +1,9 @@
 /* TODO: make page responsive -- place calendar above events list when window reaches some minimum width */
 
+h1.event-page, h2.event-header {
+    margin-top: 0px;
+}
+
 #event-page-container {
     display: flex;
     /* flex-direction: column; */

@@ -5,8 +5,12 @@
     format('opentype');
 }
 
+h1 {
+  color:rgba(255, 69, 00, 1)
+}
+
 html {
-    --scrollbarBG: black;
+    --scrollbarBG: rgb(25, 25, 25);
     --thumbBG: orangered;
   }
   body::-webkit-scrollbar {

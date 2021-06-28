@@ -49,11 +49,10 @@ function NewEventForm({ gameId, hostId, hideForm }) {
 
     return (
         <>
-            <h1>New Event</h1>
+            <h1 className='form-title'>New Event</h1>
             <div id='new-event-form-container'>
                 <form className='event-form' onSubmit={handleSubmit}>
-                    <div className='label-container'>
-                        <label>Platform</label>
+                    <div className='field-container'>
                         <select
                             className='event-input'
                             name='platform'
@@ -68,9 +67,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                                 </option>
                             ))}
                         </select>
+                        <div>
+                            <label>Platform</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label>Title</label>
+                    <div className='field-container'>
                         <input
                             className='event-input'
                             type='text'
@@ -78,9 +79,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             required />
+                        <div>
+                        <label>Title</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='date'>Date</label>
+                    <div className='field-container'>
                         <input
                             className='event-input'
                             type='date'
@@ -88,9 +91,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             value={date}
                             onChange={(e) => setDate(e.target.value)}
                             required />
+                        <div>
+                        <label htmlFor='date'>Date</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='capacity'>RSVP Limit</label>
+                    <div className='field-container'>
                         <input
                             className='event-input'
                             type='number'
@@ -98,19 +103,25 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             value={capacity}
                             onChange={(e) => setCapacity(e.target.value)}
                             required />
+                        <div>
+                        <label htmlFor='capacity'>RSVP Limit</label>
+                        </div>
                     </div>
-                    <div className='label-container'>
-                        <label htmlFor='capacity'>Description</label>
+                    <div className='field-container'>
                         <textarea
+                            rows='500'
                             className='event-input'
                             id='description'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)} />
+                        <div>
+                        <label htmlFor='capacity'>Description</label>
+                        </div>
                     </div>
                     <div className='form-buttons'>
                         <button
-                        className='form-button'
-                        type='submit'>Create</button>
+                            className='form-button'
+                            type='submit'>Create</button>
                         <button
                             className='form-button'
                             type='button'
