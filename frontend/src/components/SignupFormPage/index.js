@@ -45,47 +45,59 @@ function SignupFormPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               className='register-input'
-              />
+            />
           </div>
-              <label>
-                Email
-              </label>
+          <label>
+            Email
+          </label>
         </div>
-        <label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            className='register-input'
+        <div className='label-div'>
+          <div className='input-div'>
+            <input
+              type="text"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              className='register-input'
             />
+          </div>
+          <label>
             Username
-        </label>
-        <label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            className='register-input'
-            />
+          </label>
+        </div>
+        <div className='label-div'>
+          <label>
+            <div className='input-div'>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className='register-input'
+              />
+            </div>
             Password
-        </label>
-        <label>
-          <input
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            required
-            className='register-input'
-            />
+          </label>
+        </div>
+        <div className='label-div'>
+          <label>
+            <div className='input-div'>
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+                className='register-input'
+              />
+            </div>
             Confirm Password
-        </label>
+          </label>
+        </div>
         <div className='button-div login-register-button-div' id='register-button-div'>
           <button className='buttons login-register-buttons' id='register-button' type="submit">Sign Up</button>
         </div>
         <div className='link-div login-register-link-div'>
-          <Link className='other-page-link login-register-page-link' to='/login'>Already have an account?<br/>Log in here!</Link>
+          <Link className='other-page-link login-register-page-link' to='/login'>Already have an account?<br />Log in here!</Link>
         </div>
       </form>
     </div>
