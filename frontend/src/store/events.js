@@ -117,7 +117,6 @@ const eventsReducer = (state = initialState, action) => {
                 const eventsList = newState.list.map(id => newState[id]);
                 eventsList.push(action.event);
                 newState.list = eventsList;
-                console.log('NEWSTATE', newState)
                 return newState;
             }
             // for updating existing events
