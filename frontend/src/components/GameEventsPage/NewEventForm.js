@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { createEvent } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
 
+// TODO: add form validation on the backend
 function NewEventForm({ gameId, hostId, hideForm }) {
     const dispatch = useDispatch();
     const history = useHistory();
