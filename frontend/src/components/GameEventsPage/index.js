@@ -96,8 +96,7 @@ function GameEventsPage({ gameId, game }) {
                             (
                                 <>
                                     <li key={event.name}><h2 className='event-header'>{event.name}<br /><span className='event-date'>{event.date}</span></h2></li>
-                                    {/* <li key={elKey2}>{event.date}</li> */}
-                                    <li key={elKey3}>{event.description}</li>
+                                    <li className='event-description' key={elKey3}>{event.description}</li>
                                     <div className='event-buttons'>
                                         <button key={elKey4}
                                             onClick={() => onlyShowEditForm(event.id)}

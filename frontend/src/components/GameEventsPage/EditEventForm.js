@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import { updateEvent } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
 
+// TODO: add form validation on the backend
 function EditEventForm({ gameId, hostId, hideForm, eventId }) {
     // console.log('EVENT ID', eventId)
     // get the event to be edited
