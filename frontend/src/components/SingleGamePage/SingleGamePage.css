@@ -51,6 +51,12 @@
     padding-right: 15px
 
 }
+.game-navlink.about-active {
+    color: orangered;
+}
+.game-navlink.events-active {
+    color: orangered;
+}
 
 ul > li.platform-bullet {
     color: orangered;
@@ -69,12 +75,13 @@ ul > li.platform-bullet > span.platform-name {
     width: 525px;
 }
 
-#members-container {
-    display: flex;
+#members-container{
+    /* display: flex;
     flex-direction: column;
     justify-self: right;
     padding-left: 25px;
-    position: sticky;
+    position: sticky; */
+    display: none;
 }
 
 #join-button {

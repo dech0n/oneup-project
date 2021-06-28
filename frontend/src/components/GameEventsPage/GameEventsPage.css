@@ -2,6 +2,7 @@
 
 h1.event-page, h2.event-header {
     margin-top: 0px;
+    color: orangered;
 }
 
 #event-page-container {
@@ -27,6 +28,7 @@ h1#event-page-header.event-page {
 
 .event-header > .event-date {
     font-size: 20px;
+    color:rgb(152, 143, 129)
 }
 
 #calendar-container {
@@ -41,6 +43,7 @@ h1#event-page-header.event-page {
     padding-top: 20px;
     border-bottom: solid 1px rgba(152, 143, 129, .5);
     padding-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 .event-buttons > .event-button {
@@ -56,4 +59,8 @@ h1#event-page-header.event-page {
 .event-button {
     width: 90px;
     height: 30px;
+}
+
+.game-navlink {
+    color: rgb(152, 143, 129);
 }
