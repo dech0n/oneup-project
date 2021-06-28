@@ -1,23 +1,87 @@
 /* set baground image as old school/arcade game on every load */
 /* only set background image for home page, not others */
 
-/* #all-games-div {
-    display: inline-grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
+/* TODO: create hover effects for games */
+/* TODO: make each tile into a link to the game page */
+/* TODO: add a footer */
+/* TODO: change colors to match dark mode colors */
+#intro-block {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 100px;
+}
+
+#intro-to-site {
+    width: auto;
+    max-width: 600px;
+}
+
+h1 {
+    font-weight: 700;
+}
+h1 > span{
+    color: orangered;
+}
+
+/* #splash-image {
+    height: 300px;
+    width: 300px;
+    padding-left: 50px;
 } */
+/* for the grey gamepad */
+#splash-image {
+    height: 209px;
+    width: 320px;
+    padding-left: 50px;
+}
 
 .game-div {
     display: flex;
     overflow-y: auto;
     max-width: auto;
+    font-size: 25px;
+
+}
+
+.link {
+    text-decoration: none;
+    color: orange;
+}
+
+.game-div::-webkit-scrollbar {
+    height: 11px;
+  }
+
+.game-div::-webkit-scrollbar-track {
+    background: var(--scrollbarBG);
+}
+.game-div::-webkit-scrollbar-thumb {
+    background-color: var(--thumbBG) ;
+    border-radius: 6px;
+    border: 3px solid var(--scrollbarBG);
 }
 
 .single-game-div {
     display: flex;
     flex-direction: column;
 }
+.single-game-div:hover {
+    position: relative;
+}
+.single-game-div > li.game-image {
+    height: 280px
+}
+
+.game-image:hover {
+    /* position: absolute; */
+    height: auto;
+    box-shadow: 0px 0px 10px 10px grey;
+}
+
+.game-title {
+    padding: 9px 0px;
+}
+
 .single-game-div > li {
     list-style-type: none;
-    padding-bottom: 9px;
 }
