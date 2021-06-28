@@ -9,6 +9,7 @@ import EditEventForm from './EditEventForm';
 import './GameEventsPage.css'
 import './Calendar.css'
 import { createRsvp } from '../../store/rsvps';
+import { useHistory } from 'react-router-dom';
 
 function GameEventsPage({ gameId, game }) {
     let elKey = 1000; // for element keys
@@ -20,12 +21,20 @@ function GameEventsPage({ gameId, game }) {
     const [eventId, setEventId] = useState(null)
     // const [platformId, setPlatformId] = useState(null)
     const dispatch = useDispatch();
+    const history = useHistory();
     const events = useSelector(state => state.events.list)
     const userId = useSelector(state => state.session.user.id)
 
     useEffect(() => {
         dispatch(getSingleGameEvents(gameId))
     }, [dispatch, gameId])
+
+    const hideForms = () => {
+        setShowNewForm(false);
+        setShowEditForm(false);
+        dispatch(getSingleGameEvents(gameId))
+        history.push(`/games/${gameId}/events`)
+    }
 
     const onlyShowNewForm = () => {
         setShowNewForm(true);
@@ -40,6 +49,7 @@ function GameEventsPage({ gameId, game }) {
 
     const handleDelete = async (eventId) => {
         await dispatch(deleteEvent(eventId));
+        await dispatch(getSingleGameEvents(gameId))
     }
 
     // maybe include this in the `handleSubmit` function for a new event to auto-RSVP the host
@@ -65,7 +75,7 @@ function GameEventsPage({ gameId, game }) {
                 />
                 <div id='new-event-button-container'>
                     <button id='new-event-button'
-                            className='event-button'
+                        className='event-button'
                         onClick={onlyShowNewForm}
                     >New Event</button>
                 </div>
@@ -73,7 +83,7 @@ function GameEventsPage({ gameId, game }) {
             <div id='edit-event-form'>
                 {showEditForm ? (
                     <>
-                        <EditEventForm gameId={gameId} hostId={userId} eventId={eventId} hideForm={() => setShowEditForm(false)} />
+                        <EditEventForm gameId={gameId} hostId={userId} eventId={eventId} hideForm={hideForms} />
                     </>
                 ) : null
                 }
@@ -81,7 +91,7 @@ function GameEventsPage({ gameId, game }) {
             <div id='new-event-form'>
                 {showNewForm ? (
                     <>
-                        <NewEventForm gameId={gameId} hostId={userId} hideForm={() => setShowNewForm(false)} />
+                        <NewEventForm gameId={gameId} hostId={userId} hideForm={hideForms} />
                     </>
                 ) : null}
             </div>
@@ -96,9 +106,9 @@ function GameEventsPage({ gameId, game }) {
                             (
                                 <>
                                     <li key={event.name}><h2 className='event-header'>{event.name}<br /><span className='event-date'>{event.date}</span></h2></li>
-                                    <li className='event-description' key={elKey3}>{event.description}</li>
+                                    <li className='event-description' key={++elKey3}>{event.description}</li>
                                     <div className='event-buttons'>
-                                        <button key={elKey4}
+                                        <button key={++elKey4}
                                             onClick={() => onlyShowEditForm(event.id)}
                                             className='edit-button event-button'>Edit</button>
 

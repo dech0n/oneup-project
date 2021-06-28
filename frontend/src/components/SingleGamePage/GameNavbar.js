@@ -38,6 +38,7 @@ function GameNavbar({ gameId }) {
                             className='game-navlink'>Events</NavLink>
                         <NavLink
                             to='/members'
+                            id='members-navlink'
                             className='game-navlink'>Members</NavLink>
                         {user ? (
                             <button

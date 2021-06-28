@@ -1,5 +1,18 @@
 /* TODO: add grey shadow around image */
 
+#members-container{
+    /* display: flex;
+    flex-direction: column;
+    justify-self: right;
+    padding-left: 25px;
+    position: sticky; */
+    display: none;
+}
+
+#members-navlink {
+    display: none;
+}
+
 #game-page-container {
     display: flex;
     flex-direction: column;
@@ -73,15 +86,6 @@ ul > li.platform-bullet > span.platform-name {
 
 #game-description {
     width: 525px;
-}
-
-#members-container{
-    /* display: flex;
-    flex-direction: column;
-    justify-self: right;
-    padding-left: 25px;
-    position: sticky; */
-    display: none;
 }
 
 #join-button {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { createEvent } from '../../store/events';
+import { createEvent, getEvents } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
 import './NewEventForm.css'
 
@@ -37,9 +37,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
 
         // send the data to the store via thunk
         const event = await dispatch(createEvent(newEventData))
-        if (event) {
+        // if (event) {
+            // history.push(`/games/${gameId}/events`)
             hideForm()
-        }
+            dispatch(getEvents())
+        // }
     }
 
     const handleCancel = (e) => {
