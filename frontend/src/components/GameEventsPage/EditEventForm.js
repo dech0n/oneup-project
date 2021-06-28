@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { updateEvent } from '../../store/events';
+import { getEvents, updateEvent } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
 
 // TODO: add form validation on the backend
@@ -40,9 +40,10 @@ function EditEventForm({ gameId, hostId, hideForm, eventId }) {
         }
 
         // send the data to the store via thunk
-        /* const updatedEvent = */await dispatch(updateEvent(eventId, updatedEventData))
+        dispatch(updateEvent(eventId, updatedEventData))
         // if (updatedEvent) {
-        history.push(`/games/${gameId}/events`)
+        // history.push(`/games/${gameId}/events`)
+        dispatch(getEvents())
         hideForm()
         // }
     }

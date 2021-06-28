@@ -22,7 +22,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         dispatch(getPlatforms())
     }, [dispatch])
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
 
         const newEventData = {
@@ -36,11 +36,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         }
 
         // send the data to the store via thunk
-        const event = await dispatch(createEvent(newEventData))
+        dispatch(createEvent(newEventData))
         // if (event) {
-            // history.push(`/games/${gameId}/events`)
-            dispatch(getEvents())
-            hideForm()
+        // history.push(`/games/${gameId}/events`)
+        dispatch(getEvents())
+        hideForm()
         // }
     }
 
@@ -82,7 +82,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             onChange={(e) => setName(e.target.value)}
                             required />
                         <div>
-                        <label>Title</label>
+                            <label>Title</label>
                         </div>
                     </div>
                     <div className='field-container'>
@@ -94,7 +94,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             onChange={(e) => setDate(e.target.value)}
                             required />
                         <div>
-                        <label htmlFor='date'>Date</label>
+                            <label htmlFor='date'>Date</label>
                         </div>
                     </div>
                     <div className='field-container'>
@@ -106,7 +106,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             onChange={(e) => setCapacity(e.target.value)}
                             required />
                         <div>
-                        <label htmlFor='capacity'>RSVP Limit</label>
+                            <label htmlFor='capacity'>RSVP Limit</label>
                         </div>
                     </div>
                     <div className='field-container'>
@@ -117,7 +117,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                             value={description}
                             onChange={(e) => setDescription(e.target.value)} />
                         <div>
-                        <label htmlFor='capacity'>Description</label>
+                            <label htmlFor='capacity'>Description</label>
                         </div>
                     </div>
                     <div className='form-buttons'>
