@@ -89,6 +89,7 @@ router.delete('/:id', asyncHandler(async (req, res) => {
 
     //? delete all related RSVPs here ??
     /* code to delete RSVPs */
+    const event = await Event.findByPk(id);
 
     await Event.destroy({
         // condition to determine which events to destroy
@@ -96,6 +97,8 @@ router.delete('/:id', asyncHandler(async (req, res) => {
             id
         }
     })
+
+    return await res.json(event)
 }))
 
 module.exports = router;

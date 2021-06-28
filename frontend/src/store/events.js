@@ -86,7 +86,9 @@ export const deleteEvent = (id) => async (dispatch) => {
     });
 
     if (res.ok) {
-        const event = res.json();
+        console.log('***RES***', res)
+        const event = await res.json();
+        console.log('***EVENT***', event)
         dispatch(removeEvent(event))
     }
 }
@@ -127,9 +129,11 @@ const eventsReducer = (state = initialState, action) => {
                 }
             }
         case REMOVE_EVENT:
+            console.log(state)
+            const newState = Object.assign({}, state)
+            delete newState[action.event.id]
             return {
-                ...state.slice(0, action.event.id),
-                ...state.slice(action.event.id + 1)
+                ...newState
             }
         // case '':
 
