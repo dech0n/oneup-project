@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { getEvents, updateEvent } from '../../store/events';
+import { getEvents, updateEvent, getSingleGameEvents } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
 
 // TODO: add form validation on the backend
@@ -43,7 +43,7 @@ function EditEventForm({ gameId, hostId, hideForm, eventId }) {
         dispatch(updateEvent(eventId, updatedEventData))
         // if (updatedEvent) {
         // history.push(`/games/${gameId}/events`)
-        dispatch(getEvents())
+        dispatch(getSingleGameEvents(gameId))
         hideForm()
         // }
     }

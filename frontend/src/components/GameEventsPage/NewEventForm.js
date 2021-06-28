@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
-import { createEvent, getEvents } from '../../store/events';
+import { createEvent, getEvents, getSingleGameEvents } from '../../store/events';
+import { getSingleGame } from '../../store/games';
 import { getPlatforms } from '../../store/platforms';
 import './NewEventForm.css'
 
@@ -39,7 +40,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         dispatch(createEvent(newEventData))
         // if (event) {
         // history.push(`/games/${gameId}/events`)
-        dispatch(getEvents())
+        dispatch(getSingleGameEvents(gameId))
         hideForm()
         // }
     }
