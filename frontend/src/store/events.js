@@ -129,7 +129,6 @@ const eventsReducer = (state = initialState, action) => {
                 }
             }
         case REMOVE_EVENT:
-            console.log(state)
             const newState = Object.assign({}, state)
             delete newState[action.event.id]
             return {
