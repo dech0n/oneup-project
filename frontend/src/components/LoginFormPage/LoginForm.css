@@ -1,7 +1,6 @@
-#login-form-div {
+.login-register-div {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     box-sizing: border-box;
     border-radius: 5px;
