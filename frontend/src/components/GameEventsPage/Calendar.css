@@ -1,7 +1,10 @@
+/* TODO: style left-right arrows to be orangred */
+
 .react-calendar {
-    width: 700px;
-    max-width: 100%;
-    background: white;
+    width: auto;
+    /* max-width: 100%; */
+    max-width: 550px;
+    background-color: rgb(25, 25, 25);
     border: 1px solid #a0a096;
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.125em;
@@ -43,7 +46,7 @@
   }
   .react-calendar__navigation button:enabled:hover,
   .react-calendar__navigation button:enabled:focus {
-    background-color: #e6e6e6;
+    /* background-color: #e6e6e6; */
   }
   .react-calendar__navigation button[disabled] {
     background-color: #f0f0f0;
@@ -67,11 +70,11 @@
     font-size: 0.75em;
     padding: calc(0.75em / 0.75) calc(0.5em / 0.75);
   }
-  .react-calendar__month-view__days__day--weekend {
-    color: #d10000;
+  .react-calendar .react-calendar__month-view__days__day--weekend {
+    color: orangered;
   }
-  .react-calendar__month-view__days__day--neighboringMonth {
-    color: #757575;
+  .react-calendar .react-calendar__month-view__days__day--neighboringMonth {
+    color: rgb(152, 143, 129);
   }
   .react-calendar__year-view .react-calendar__tile,
   .react-calendar__decade-view .react-calendar__tile,
@@ -83,6 +86,7 @@
     text-align: center;
     padding: 0.75em 0.5em;
     background: none;
+    color: lightgrey;
   }
   .react-calendar__tile:disabled {
     background-color: #f0f0f0;
@@ -117,7 +121,19 @@
     background-color: #e6e6e6;
   }
 
+  #calendar-container > div > div.react-calendar__navigation > button.react-calendar__navigation__label > span {
+    color: rgb(152, 143, 129);
+    font-weight: bold;
+    font-size: 35px;
+  }
 
+  #calendar-container > div > div.react-calendar__navigation > button.react-calendar__navigation__label {
+    padding-top: 20px
+  }
+
+  #calendar-container {
+    justify-content: center;
+  }
   /* //     // 2021-06-22T08:25:48.893Z <-- event.date format
     //     const getEventDates = async () => {
     //         const dates = await events.map(event => event.date.slice(0, 10).split('-'))

@@ -1,3 +1,5 @@
+/* TODO: add grey shadow around image */
+
 #game-page-container {
     display: flex;
     flex-direction: column;
@@ -73,4 +75,9 @@ ul > li.platform-bullet > span.platform-name {
     justify-self: right;
     padding-left: 25px;
     position: sticky;
+}
+
+#join-button {
+    width: 80px;
+    height: 25px;
 }

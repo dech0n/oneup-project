@@ -1,0 +1,51 @@
+/* TODO: make page responsive -- place calendar above events list when window reaches some minimum width */
+
+#event-page-container {
+    display: flex;
+    /* flex-direction: column; */
+    justify-content: center;
+}
+
+#event-list {
+    overflow-x: auto;
+    height: auto;
+}
+
+ul#event-list > li {
+    max-width: 400px;
+}
+
+h1#event-page-header.event-page {
+    text-align: center;
+}
+
+.event-header > .event-date {
+    font-size: 20px;
+}
+
+#calendar-container {
+    padding-right: 20px;
+
+}
+
+.event-buttons {
+    display: flex;
+    justify-content: space-between;
+    max-width: 400px;
+    padding-top: 5px;
+}
+
+.event-buttons > .event-button {
+    width: 30%;
+}
+
+#new-event-button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 5px;
+}
+
+.event-button {
+    width: 90px;
+    height: 30px;
+}
