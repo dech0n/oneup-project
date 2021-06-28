@@ -1,6 +1,4 @@
-/* figure out how to CENTER THE DANG INPUT FIELDS */
-
-#register-form-div {
+#new-event-form-div {
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
@@ -12,7 +10,7 @@
     box-shadow: 5px 5px 5px 5px grey;
 }
 
-.register-input {
+.event-input {
     width: 300px;
     height: 25px;
     border: none;
@@ -21,13 +19,13 @@
     /* align-self: center; */
 }
 
-.register-input:focus {
+.event-input:focus {
     outline: none;
     background-color: rgba(128, 128, 128, .1);
     border-radius: 3px;
 }
 
-.register-input[type="text"], .register-input[type="password"]
+.event-input[type="text"], textarea.event-input, select.event-input, .event-input[type="number"], .event-input[type="date"]
 {
     font-size:20px;
     color: orangered;
@@ -35,28 +33,25 @@
     background-color: rgb(50, 50, 50);
 }
 
-#register-form {
+/* .event-form {
     justify-content: center;
-}
+} */
 
 input {
     width: 300px;
 }
 
-#register-button-div {
+.form-buttons {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin: 5px 0px;
+    margin-left: 5px;
 }
 
-#register-button {
+.form-buttons > .form-button {
     padding: 1px 0px;
-    width: 308px;
-    height: 25px;
-}
-
-.other-page-link {
-    text-decoration: none;
+    width: 90px;
+    height: 30px;
 }
 
 .link-div {

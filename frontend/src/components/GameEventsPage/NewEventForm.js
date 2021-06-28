@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+
 import { createEvent } from '../../store/events';
 import { getPlatforms } from '../../store/platforms';
+import './NewEventForm.css'
 
 // TODO: add form validation on the backend
 function NewEventForm({ gameId, hostId, hideForm }) {
@@ -15,8 +17,6 @@ function NewEventForm({ gameId, hostId, hideForm }) {
     const [description, setDescription] = useState('')
 
     const platforms = useSelector(state => state.platforms.list)
-
-    console.log('FORM PLATS', platforms)
 
     useEffect(() => {
         dispatch(getPlatforms())
@@ -51,10 +51,11 @@ function NewEventForm({ gameId, hostId, hideForm }) {
         <>
             <h1>New Event</h1>
             <div id='new-event-form-container'>
-                <form onSubmit={handleSubmit}>
+                <form className='event-form' onSubmit={handleSubmit}>
                     <div className='label-container'>
                         <label>Platform</label>
                         <select
+                            className='event-input'
                             name='platform'
                             value={platformId}
                             onChange={(e) => setPlatformId(e.target.value)}
@@ -71,6 +72,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                     <div className='label-container'>
                         <label>Title</label>
                         <input
+                            className='event-input'
                             type='text'
                             id='name'
                             value={name}
@@ -80,6 +82,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                     <div className='label-container'>
                         <label htmlFor='date'>Date</label>
                         <input
+                            className='event-input'
                             type='date'
                             id='date'
                             value={date}
@@ -89,6 +92,7 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                     <div className='label-container'>
                         <label htmlFor='capacity'>RSVP Limit</label>
                         <input
+                            className='event-input'
                             type='number'
                             id='capacity'
                             value={capacity}
@@ -98,14 +102,20 @@ function NewEventForm({ gameId, hostId, hideForm }) {
                     <div className='label-container'>
                         <label htmlFor='capacity'>Description</label>
                         <textarea
+                            className='event-input'
                             id='description'
                             value={description}
                             onChange={(e) => setDescription(e.target.value)} />
                     </div>
-                    <button type='submit'>Create</button>
-                    <button
-                        type='button'
-                        onClick={handleCancel}>Cancel</button>
+                    <div className='form-buttons'>
+                        <button
+                        className='form-button'
+                        type='submit'>Create</button>
+                        <button
+                            className='form-button'
+                            type='button'
+                            onClick={handleCancel}>Cancel</button>
+                    </div>
                 </form>
             </div>
         </>

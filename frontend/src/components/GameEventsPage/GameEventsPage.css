@@ -9,6 +9,7 @@
 #event-list {
     overflow-x: auto;
     max-height: auto;
+    /* position: absolute; */
 }
 
 ul#event-list > li {
